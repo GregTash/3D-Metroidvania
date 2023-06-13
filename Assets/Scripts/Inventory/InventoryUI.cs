@@ -29,16 +29,15 @@ public class InventoryUI : MonoBehaviour
         foreach(Item item in _inventory.GetItemList())
         {
             RectTransform itemSlotRectTransform = Instantiate(_itemSlotTemplate, _itemSlotContainer).GetComponent<RectTransform>();
-            
             itemSlotRectTransform.gameObject.SetActive(true);
+
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
 
             Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
             image.sprite = item.GetSprite();
-            
+
             x++;
 
-            //Move list one column down if too many items are on the same row.
             if (x > 5)
             {
                 x = 0;

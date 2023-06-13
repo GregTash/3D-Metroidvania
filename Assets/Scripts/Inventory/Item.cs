@@ -11,11 +11,11 @@ public class Item
     }
 
     public ItemType itemType;
-    public int amount;
+    public int amount = 1;
 
     public Sprite GetSprite()
     {
-        switch(itemType)
+        switch (itemType)
         {
             default:
             case ItemType.Sword: return ItemAssets.Instance._swordSprite;
