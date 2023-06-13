@@ -24,4 +24,17 @@ public class Item
             case ItemType.HealthPotion: return ItemAssets.Instance._healthPotionSprite;
         }
     }
+
+    public bool IsStackable()
+    {
+        switch (itemType)
+        {
+            default:
+            case ItemType.HealthPotion:
+                return true;
+
+            case ItemType.Sword:
+                return false;
+        }
+    }
 }
