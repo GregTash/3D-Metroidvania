@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -55,6 +56,13 @@ public class InventoryUI : MonoBehaviour
 
             Image image = itemSlotRectTransform.Find("Image").GetComponent<Image>();
             image.sprite = item.GetSprite();
+
+            TMP_Text amount = itemSlotRectTransform.Find("Amount").GetComponent<TMP_Text>();
+            amount.text = item.amount.ToString();
+            if(!item.IsStackable())
+            {
+                amount.text = "";
+            }
 
             x++;
 

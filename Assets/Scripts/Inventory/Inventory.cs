@@ -24,6 +24,7 @@ public class Inventory
                 if(inventoryItem.itemType == item.itemType)
                 {
                     inventoryItem.amount += item.amount;
+                    alreadyInInventory = true;
                 }
             }
 
