@@ -15,14 +15,34 @@ public class InventoryUI : MonoBehaviour
         _itemSlotTemplate = _itemSlotContainer.Find("ItemSlotTemplate");
     }
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void SetInventory(Inventory inventory)
     {
         this._inventory = inventory;
+
+        _inventory.OnItemListChanged += Inventory_OnItemListChanged;
+
+        RefreshInventoryItems();
+    }
+
+    void Inventory_OnItemListChanged(object sender, System.EventArgs e)
+    {
         RefreshInventoryItems();
     }
 
     void RefreshInventoryItems()
     {
+        foreach(Transform child in _itemSlotContainer)
+        {
+            if (child == _itemSlotTemplate) continue;
+
+            Destroy(child.gameObject);
+        }
+
         int x = 0, y = 0;
         float itemSlotCellSize = 120f;
 

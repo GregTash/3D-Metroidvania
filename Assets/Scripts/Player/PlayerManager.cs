@@ -5,13 +5,14 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] int health = 100;
     [SerializeField] InventoryUI uiInventory;
-    Inventory _playerInventory;
+    public Inventory PlayerInventory { get; private set; }
     [SerializeField] PlayerInput playerInput;
 
-    private void Awake()
+    private void Start()
     {
-        _playerInventory = new Inventory();
-        uiInventory.SetInventory(_playerInventory);
+        PlayerInventory = new Inventory();
+        uiInventory.SetInventory(PlayerInventory);
+        ItemPickup.SpawnItemPickup(new Vector3(0, 1, 0), new Item { itemType = Item.ItemType.Sword, amount = 1 });
     }
 
     private void OnEnable()
