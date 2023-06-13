@@ -12,7 +12,6 @@ public class PlayerManager : MonoBehaviour
     {
         PlayerInventory = new Inventory();
         uiInventory.SetInventory(PlayerInventory);
-        ItemPickup.SpawnItemPickup(new Vector3(0, 1, 0), new Item { itemType = Item.ItemType.Sword, amount = 1 });
     }
 
     private void OnEnable()
