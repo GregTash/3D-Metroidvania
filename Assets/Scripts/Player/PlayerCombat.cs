@@ -54,8 +54,16 @@ public class PlayerCombat : MonoBehaviour
 
     void Swing()
     {
+        IDamageable damageable;
         Debug.Log("Swing function working");
         StartCoroutine(IActivateSword());
+        if (_swordCollision.hitEnemy != null)
+        {
+            _swordCollision.hitEnemy.TryGetComponent(out DamageTarget damageTarget);
+            damageable = damageTarget.GetComponent<IDamageable>();
+            damageable.TakeDamage(weaponDamage);
+
+        }
     }
 
     IEnumerator IActivateSword()

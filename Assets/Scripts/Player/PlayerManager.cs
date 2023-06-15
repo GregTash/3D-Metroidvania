@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviour, IDamageable
 {
     public int health = 100;
     [SerializeField] InventoryUI uiInventory;
@@ -38,5 +38,10 @@ public class PlayerManager : MonoBehaviour
         {
             uiInventory.gameObject.SetActive(false);
         }
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
     }
 }
