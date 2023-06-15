@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] GameObject swordObject;
-    SwordCollision _swordCollision;
     [SerializeField] float appearForSeconds;
     [SerializeField] int weaponDamage;
     public bool hasHitEnemy;
@@ -54,16 +53,8 @@ public class PlayerCombat : MonoBehaviour
 
     void Swing()
     {
-        IDamageable damageable;
         Debug.Log("Swing function working");
         StartCoroutine(IActivateSword());
-        if (_swordCollision.hitEnemy != null)
-        {
-            _swordCollision.hitEnemy.TryGetComponent(out DamageTarget damageTarget);
-            damageable = damageTarget.GetComponent<IDamageable>();
-            damageable.TakeDamage(weaponDamage);
-
-        }
     }
 
     IEnumerator IActivateSword()
