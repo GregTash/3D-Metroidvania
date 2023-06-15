@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour, IDamageable
 {
@@ -28,6 +29,14 @@ public class PlayerManager : MonoBehaviour, IDamageable
         InputAction toggleInventory = playerInput.actions["Inventory"];
 
         toggleInventory.started -= ToggleInventory;
+    }
+
+    void Update()
+    {
+        if(health <= 0)
+        {
+            SceneManager.LoadScene("TomTests");
+        }
     }
 
     void ToggleInventory(InputAction.CallbackContext context)
