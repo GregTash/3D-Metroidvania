@@ -11,7 +11,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] int weaponDamage;
     public bool hasHitEnemy;
 
-    public PlayerInput PlayerInput { get; private set; }
+    [SerializeField] PlayerInput PlayerInput;
 
     // Start is called before the first frame update
     void Start()
@@ -54,11 +54,13 @@ public class PlayerCombat : MonoBehaviour
 
     void Swing()
     {
+        Debug.Log("Swing function working");
         StartCoroutine(IActivateSword());
     }
 
     IEnumerator IActivateSword()
     {
+        Debug.Log("Enumerator is working");
         swordObject.SetActive(true);
         yield return new WaitForSeconds(appearForSeconds);
         swordObject.SetActive(false);
