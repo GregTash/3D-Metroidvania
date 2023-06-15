@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour, IDamageable
 {
     public int health = 100;
+    public int MaxHealth { get; private set; } = 100;
+
     [SerializeField] InventoryUI uiInventory;
     public Inventory PlayerInventory { get; private set; }
     [SerializeField] PlayerInput playerInput;
