@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SwordCollision : MonoBehaviour
 {
     public GameObject hitEnemy;
+    [SerializeField] float appearForSeconds;
     [SerializeField] int weaponDamage;
+
+    [SerializeField] PlayerInput PlayerInput;
+
+    private void Start()
+    {
+        //Player
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,12 +34,8 @@ public class SwordCollision : MonoBehaviour
     void DamageToEnemy()
     {
         IDamageable damageable;
-        Debug.Log("Enemy Found");
         hitEnemy.TryGetComponent(out DamageTarget damageTarget);
-        Debug.Log("Component gotten");
         damageable = damageTarget.GetComponent<IDamageable>();
-        Debug.Log("Got IDamageable");
         damageable.TakeDamage(weaponDamage);
-        Debug.Log("Damage Taken");
     }
 }
