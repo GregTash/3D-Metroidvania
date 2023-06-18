@@ -2,14 +2,19 @@ using UnityEngine;
 
 public class DamageTarget : MonoBehaviour, IDamageable
 {
-    [SerializeField] int health;
+    public int maxHealth;
+    public int Health { get; private set; }
+
+    void Start()
+    {
+        Health = maxHealth;
+    }
 
     public void Hit(int damageAmount)
     {
-        Debug.Log("DamageTarget hit");
-        health -= damageAmount;
+        Health -= damageAmount;
 
-        if (health <= 0)
+        if (Health <= 0)
         {
             Destroy(gameObject);
         }
