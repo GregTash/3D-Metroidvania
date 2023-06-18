@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 80d0c91d5cc8b6449ac4df1692cc73fe, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -177,7 +177,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 14cac6cf9c210534cbde17a84171b61c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -213,7 +213,6 @@ GameObject:
   - component: {fileID: 5973162948024621448}
   - component: {fileID: 5973162948024621449}
   - component: {fileID: 3247495052742451703}
-  - component: {fileID: 629430624457310450}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -336,18 +335,6 @@ MonoBehaviour:
   health: 100
   uiInventory: {fileID: 0}
   playerInput: {fileID: 5973162948024621448}
---- !u!114 &629430624457310450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5973162948024621444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbaaf10e5c954bf40b416abdb614bd63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5973162948140353398
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +381,11 @@ PrefabInstance:
     - target: {fileID: 848201074430349263, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2005522567439150491, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3616057645153734320, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
@@ -408,18 +400,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8219774071390942827, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.14959
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219774071390942827, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.14863
+      objectReference: {fileID: 0}
+    - target: {fileID: 8219774071390942827, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.644
       objectReference: {fileID: 0}
     - target: {fileID: 8219774071390942827, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.111
       objectReference: {fileID: 0}
     - target: {fileID: 8219774071390942827, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.52
+      value: 0.414
       objectReference: {fileID: 0}
     - target: {fileID: 8219774071390942827, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
         type: 3}
@@ -464,3 +466,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7119436578751864205}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7568364848391377474 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 848201074430349263, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 7119436578751864205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1284489857
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7568364848391377474}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9af44e1a6bfd76947a5add53fc568d31, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
