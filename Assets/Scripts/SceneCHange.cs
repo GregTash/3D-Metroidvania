@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneCHange : MonoBehaviour
+public class SceneChange : MonoBehaviour
 {
     public GameObject endPanel;
 

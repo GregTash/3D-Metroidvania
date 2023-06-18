@@ -5,6 +5,12 @@ using UnityEngine;
 public class EnemyMelee : MonoBehaviour
 {
     [SerializeField] int damageAmount;
+    AudioSource _audioSource;
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -15,6 +21,8 @@ public class EnemyMelee : MonoBehaviour
         {
             damageable = playerManager.GetComponent<IDamageable>();
             damageable.TakeDamage(damageAmount); // Runs TakeDamage
+
+            _audioSource.Play();
         }
     }
 }

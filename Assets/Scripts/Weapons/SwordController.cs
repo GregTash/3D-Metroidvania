@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SwordCollision : MonoBehaviour
+public class SwordController : MonoBehaviour
 {
-    public GameObject hitEnemy;
+    [HideInInspector] GameObject hitEnemy;
     [SerializeField] float appearForSeconds;
     [SerializeField] int weaponDamage;
     bool swinging;
@@ -17,6 +17,8 @@ public class SwordCollision : MonoBehaviour
     PlayerMovement _playerMovement;
     Rigidbody _playerRb;
 
+    AudioSource _audioSource;
+
     private void Awake()
     {
         transform.root.GetComponent<PlayerInput>();
@@ -24,6 +26,7 @@ public class SwordCollision : MonoBehaviour
         _animator = GetComponent<Animator>();
         _playerRb = transform.root.GetComponent<Rigidbody>();
         _playerMovement = transform.root.GetComponent<PlayerMovement>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -49,8 +52,8 @@ public class SwordCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             hitEnemy = other.gameObject;
-            Debug.Log(hitEnemy.name);
             DamageToEnemy();
+            _audioSource.Play();
         }
     }
 
@@ -77,31 +80,16 @@ public class SwordCollision : MonoBehaviour
 
     void Swing()
     {
-        if (swinging) return;
-        
         _animator.Play("Swing Sword");
     }
 
     void HitboxEnable()
     {
         _collider.enabled = true;
-        swinging = true;
     }
 
     void HitboxDisable()
     {
         _collider.enabled = false;
-        swinging = false;
-    }
-
-    void StopPlayer()
-    {
-        _playerMovement.detectInput = false;
-        _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, 0);
-    }
-
-    void StartPlayer()
-    {
-        _playerMovement.detectInput = true;
     }
 }

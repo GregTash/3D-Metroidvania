@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DIsappearingWall : MonoBehaviour
+public class DisappearingWall : MonoBehaviour
 {
     [SerializeField] GameObject boss;
     // Start is called before the first frame update
