@@ -9,6 +9,7 @@ public class SwordController : MonoBehaviour
     [HideInInspector] GameObject hitEnemy;
     [SerializeField] float appearForSeconds;
     [SerializeField] int weaponDamage;
+    [SerializeField] float knockbackDistance;
     bool swinging;
 
     [SerializeField] PlayerInput PlayerInput;
@@ -16,6 +17,7 @@ public class SwordController : MonoBehaviour
     Animator _animator;
     PlayerMovement _playerMovement;
     Rigidbody _playerRb;
+    Camera _cam;
 
     AudioSource _audioSource;
 
@@ -53,6 +55,7 @@ public class SwordController : MonoBehaviour
         {
             hitEnemy = other.gameObject;
             DamageToEnemy();
+            KnockbackEnemy();
             _audioSource.Play();
         }
     }
@@ -81,6 +84,11 @@ public class SwordController : MonoBehaviour
     void Swing()
     {
         _animator.Play("Swing Sword");
+    }
+
+    void KnockbackEnemy()
+    {
+        hitEnemy.GetComponent<Rigidbody>().AddForce(transform.forward * knockbackDistance);
     }
 
     void HitboxEnable()
