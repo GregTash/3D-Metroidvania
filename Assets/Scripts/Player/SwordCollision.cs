@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,9 +12,28 @@ public class SwordCollision : MonoBehaviour
 
     [SerializeField] PlayerInput PlayerInput;
 
-    private void Start()
+    private void Awake()
     {
-        //Player
+        transform.root.GetComponent<PlayerInput>();
+        Debug.Log(transform.root.name);
+    }
+
+    private void OnEnable()
+    {
+        InputAction attackKeyPressed = PlayerInput.actions["Attack"];
+
+        attackKeyPressed.started += OnSwing;
+
+        attackKeyPressed.Enable();
+    }
+
+    private void OnDisable()
+    {
+        InputAction attackKeyPressed = PlayerInput.actions["Attack"];
+
+        attackKeyPressed.Disable();
+
+        attackKeyPressed.started -= OnSwing;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,5 +57,27 @@ public class SwordCollision : MonoBehaviour
         hitEnemy.TryGetComponent(out DamageTarget damageTarget);
         damageable = damageTarget.GetComponent<IDamageable>();
         damageable.TakeDamage(weaponDamage);
+    }
+    
+    void OnSwing(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            Swing();
+        }
+    }
+
+    void Swing()
+    {
+        Debug.Log("Swing function working");
+        StartCoroutine(IActivateSword());
+    }
+
+    IEnumerator IActivateSword()
+    {
+        Debug.Log("Enumerator is working");
+        gameObject.SetActive(true);
+        yield return new WaitForSeconds(appearForSeconds);
+        gameObject.SetActive(false);
     }
 }
