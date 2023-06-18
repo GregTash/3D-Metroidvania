@@ -9,13 +9,21 @@ public class SwordCollision : MonoBehaviour
     public GameObject hitEnemy;
     [SerializeField] float appearForSeconds;
     [SerializeField] int weaponDamage;
+    bool swinging;
 
     [SerializeField] PlayerInput PlayerInput;
+    Collider _collider;
+    Animator _animator;
+    PlayerMovement _playerMovement;
+    Rigidbody _playerRb;
 
     private void Awake()
     {
         transform.root.GetComponent<PlayerInput>();
-        Debug.Log(transform.root.name);
+        _collider = GetComponent<Collider>();
+        _animator = GetComponent<Animator>();
+        _playerRb = transform.root.GetComponent<Rigidbody>();
+        _playerMovement = transform.root.GetComponent<PlayerMovement>();
     }
 
     private void OnEnable()
@@ -69,15 +77,31 @@ public class SwordCollision : MonoBehaviour
 
     void Swing()
     {
-        Debug.Log("Swing function working");
-        StartCoroutine(IActivateSword());
+        if (swinging) return;
+        
+        _animator.Play("Swing Sword");
     }
 
-    IEnumerator IActivateSword()
+    void HitboxEnable()
     {
-        Debug.Log("Enumerator is working");
-        gameObject.SetActive(true);
-        yield return new WaitForSeconds(appearForSeconds);
-        gameObject.SetActive(false);
+        _collider.enabled = true;
+        swinging = true;
+    }
+
+    void HitboxDisable()
+    {
+        _collider.enabled = false;
+        swinging = false;
+    }
+
+    void StopPlayer()
+    {
+        _playerMovement.detectInput = false;
+        _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, 0);
+    }
+
+    void StartPlayer()
+    {
+        _playerMovement.detectInput = true;
     }
 }
