@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class SwordController : MonoBehaviour
 {
-    [HideInInspector] GameObject hitEnemy;
+    [HideInInspector] public GameObject hitEnemy;
     [SerializeField] float appearForSeconds;
     [SerializeField] int weaponDamage;
     [SerializeField] float knockbackDistance;
