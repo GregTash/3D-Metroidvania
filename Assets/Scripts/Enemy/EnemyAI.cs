@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
 
     public NavMeshAgent navMeshAgent;
 
-    [SerializeField] Transform player;
+    public Transform player;
 
     public LayerMask playerLayer, groundLayer;
 
@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
 
     // Check for range
     [SerializeField] float sightRange;
-    [SerializeField] bool playerInRange;
+    public bool playerInRange;
 
     private void Awake()
     {
