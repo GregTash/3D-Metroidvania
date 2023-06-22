@@ -313,7 +313,7 @@ MonoBehaviour:
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
-  sightRange: 5
+  sightRange: 8
   playerInRange: 0
 --- !u!54 &7149903392012872153
 Rigidbody:
