@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
 
     [Header("GroundCheck")]
-    [SerializeField] float playerHeight;
+    [SerializeField] float playerHeight, maxWalkableAngle = 45f;
     [SerializeField] LayerMask ignoreLayers;
     public bool Grounded { get; private set; } = false;
 
@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
     void GroundCheck()
     {
         Grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ~ignoreLayers);
+        Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight + 3f, ~ignoreLayers);
 
         if (Grounded)
         {
@@ -107,6 +108,19 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _rb.drag = 0;
+        }
+
+        if (hit.transform != null)
+        {
+            float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+
+            if (slopeAngle >= maxWalkableAngle && !Grounded)
+            {
+                if(_horizontalInput != 0 || _verticalInput != 0)
+                {
+                    _rb.velocity = new Vector3(_rb.velocity.x, Physics.gravity.y, _rb.velocity.z);
+                }
+            }
         }
     }
 
