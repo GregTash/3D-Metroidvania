@@ -3,12 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class OutOfBounds : MonoBehaviour
 {
-    Transform _playerTransform;
-
-    private void Start()
-    {
-        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+    [SerializeField] Transform _playerTransform;
 
     private void Update()
     {
