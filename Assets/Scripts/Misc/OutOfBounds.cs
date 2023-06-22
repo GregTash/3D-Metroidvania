@@ -14,7 +14,7 @@ public class OutOfBounds : MonoBehaviour
     {
         if(_playerTransform.position.y <= transform.position.y)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            _playerTransform.GetComponent<PlayerManager>().health = 0;
         }
     }
 }

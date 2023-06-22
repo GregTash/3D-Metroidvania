@@ -35,7 +35,12 @@ public class PlayerManager : MonoBehaviour, IDamageable
     {
         if(health <= 0)
         {
-            SceneManager.LoadScene("TomTests");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if(health > MaxHealth)
+        {
+            health = MaxHealth;
         }
     }
 
