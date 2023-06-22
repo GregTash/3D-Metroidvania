@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class KillOnFall : MonoBehaviour
 {
-    Vector2 _lastPos;
-    [SerializeField] float thisObjHeight = 2f;
     public bool _grounded = false;
-    [SerializeField] LayerMask ignoreLayers;
     [SerializeField] float timeBeforeDeath = 5f;
     float _timeBeforeDeath;
+    [SerializeField] GameObject enemyObj;
 
     private void Awake()
     {
@@ -18,10 +16,6 @@ public class KillOnFall : MonoBehaviour
 
     void Update()
     {
-        _lastPos = transform.position;
-
-        _grounded = Physics.Raycast(transform.localPosition, Vector3.down, out RaycastHit hit, thisObjHeight * 0.5f + 0.2f, ~ignoreLayers);
-
         if(!_grounded)
         {
             _timeBeforeDeath -= Time.deltaTime;
@@ -33,7 +27,17 @@ public class KillOnFall : MonoBehaviour
 
         if(_timeBeforeDeath <= 0)
         {
-            Destroy(gameObject);
+            Destroy(enemyObj);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        _grounded = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        _grounded = false;
     }
 }
