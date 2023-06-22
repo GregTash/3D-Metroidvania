@@ -6,16 +6,16 @@ public class PlayerMovement : MonoBehaviour
     public bool detectInput = true;
 
     [Header("Movement")]
-    [SerializeField] float moveSpeed;
+    public float moveSpeed;
 
     [SerializeField] float groundDrag;
 
     [SerializeField] float jumpForce;
 
     [Header("GroundCheck")]
-    [SerializeField] float playerHeight;
+    [SerializeField] float playerHeight, maxWalkableAngle = 45f;
     [SerializeField] LayerMask ignoreLayers;
-    bool _grounded = false;
+    public bool Grounded { get; private set; } = false;
 
     [SerializeField] Transform orientation;
 
@@ -54,15 +54,11 @@ public class PlayerMovement : MonoBehaviour
         InputAction jumpKeyPress = PlayerInput.actions["Jump"];
 
         jumpKeyPress.started += OnJump;
-
-        jumpKeyPress.Enable();
     }
 
     private void OnDisable()
     {
         InputAction jumpKeyPress = PlayerInput.actions["Jump"];
-
-        jumpKeyPress.Disable();
 
         jumpKeyPress.started -= OnJump;
     }
@@ -93,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(context.started)
         {
-            if(_grounded)
+            if(Grounded)
             {
                 Jump();
             }
@@ -102,15 +98,29 @@ public class PlayerMovement : MonoBehaviour
 
     void GroundCheck()
     {
-        _grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ~ignoreLayers);
+        Grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ~ignoreLayers);
+        Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight + 3f, ~ignoreLayers);
 
-        if (_grounded)
+        if (Grounded)
         {
             _rb.drag = groundDrag;
         }
         else
         {
             _rb.drag = 0;
+        }
+
+        if (hit.transform != null)
+        {
+            float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+
+            if (slopeAngle >= maxWalkableAngle && !Grounded)
+            {
+                if(_horizontalInput != 0 || _verticalInput != 0)
+                {
+                    _rb.velocity = new Vector3(_rb.velocity.x, Physics.gravity.y, _rb.velocity.z);
+                }
+            }
         }
     }
 
