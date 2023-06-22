@@ -37,6 +37,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+
+        if(health > MaxHealth)
+        {
+            health = MaxHealth;
+        }
     }
 
     void ToggleInventory(InputAction.CallbackContext context)
