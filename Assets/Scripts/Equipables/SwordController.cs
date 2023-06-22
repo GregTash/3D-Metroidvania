@@ -55,7 +55,7 @@ public class SwordController : MonoBehaviour
         {
             hitEnemy = other.gameObject;
             DamageToEnemy();
-            KnockbackEnemy();
+            //KnockbackEnemy();
             _audioSource.Play();
         }
     }
