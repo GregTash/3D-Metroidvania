@@ -111,8 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 200da0606e0ab6e4eb97f5d4d734c770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEnemy: {fileID: 0}
   appearForSeconds: 1
-  weaponDamage: 2
+  weaponDamage: 10
   knockbackDistance: 4
   PlayerInput: {fileID: 5973162948024621448, guid: 92b49eb16b26bf846b137563f06e3167,
     type: 3}
