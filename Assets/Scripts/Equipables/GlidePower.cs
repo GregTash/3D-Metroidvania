@@ -7,6 +7,7 @@ public class GlidePower : MonoBehaviour
     [SerializeField] PlayerInput playerInput;
     Rigidbody _playerRb;
     float _glideVelocity = -1f, _glideSpeed = 15f, _playerSpeed;
+    bool _disableUsage = false;
 
     private void Start()
     {
@@ -36,11 +37,18 @@ public class GlidePower : MonoBehaviour
         {
             GlideDisableNoCallbackContext();
         }
+
+        if(_playerMovement.Grounded)
+        {
+            _disableUsage = false;
+        }
     }
 
     void GlideEnable(InputAction.CallbackContext context)
     {
-        if (_playerMovement.Grounded) return;
+        if (_playerMovement.Grounded || _disableUsage) return;
+
+        _disableUsage = true;
 
         _playerMovement.moveSpeed = _glideSpeed;
 
