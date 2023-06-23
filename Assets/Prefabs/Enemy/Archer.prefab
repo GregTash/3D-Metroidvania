@@ -329,6 +329,7 @@ MonoBehaviour:
     type: 3}
   projectileSpawner: {fileID: 6322065011223311943}
   rotationSpeed: 100000
+  shotPower: 50
 --- !u!114 &7905794293614414608
 MonoBehaviour:
   m_ObjectHideFlags: 0

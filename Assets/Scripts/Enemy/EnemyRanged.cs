@@ -16,6 +16,8 @@ public class EnemyRanged : MonoBehaviour
     [SerializeField] GameObject projectileSpawner;
     [SerializeField] float rotationSpeed; // rotationSpeed of Slerp
     // Start is called before the first frame update
+    [SerializeField] float shotPower;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -42,7 +44,7 @@ public class EnemyRanged : MonoBehaviour
         //transform.rotation = Quaternion.Slerp(transform.rotation, rotationAngle, Time.deltaTime * rotationSpeed);
 
         var targetDirection = _enemyAI.player.position - transform.position;
-        targetDirection.y = 0; // Set the Y-component to zero to restrict rotation on the Y-axis
+        // targetDirection.y = 0; // Set the Y-component to zero to restrict rotation on the Y-axis
         var rotationAngle = Quaternion.LookRotation(targetDirection);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotationAngle, Time.deltaTime * rotationSpeed);
@@ -50,7 +52,7 @@ public class EnemyRanged : MonoBehaviour
         if (!alreadyAttacked)
         {
             Rigidbody _projectileRb = Instantiate(projectile, projectileSpawner.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            _projectileRb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            _projectileRb.velocity = transform.forward * shotPower;
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }

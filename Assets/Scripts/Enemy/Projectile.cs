@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     AudioSource _audioSource;
     Collider _collider;
     Renderer _renderer;
+    [SerializeField] LayerMask groundLayer;
 
     private void Awake()
     {
@@ -33,6 +34,11 @@ public class Projectile : MonoBehaviour
             damageable = damageTarget.GetComponent<IDamageable>();
             damageable.TakeDamage(damageAmount);
             AfterProjectileCollides();
+        }
+
+        if (groundLayer == (groundLayer | (1 << collision.gameObject.layer)))
+        {
+            Destroy(gameObject);
         }
     }
 
