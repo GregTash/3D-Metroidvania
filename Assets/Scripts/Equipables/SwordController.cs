@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Analytics;
 
 public class SwordController : MonoBehaviour
 {
@@ -78,16 +77,6 @@ public class SwordController : MonoBehaviour
         hitEnemy.TryGetComponent(out DamageTarget damageTarget);
         damageable = damageTarget.GetComponent<IDamageable>();
         damageable.TakeDamage(weaponDamage);
-
-        // Analytic stuff
-        //AnalyticsResult analyticsResult = Analytics.CustomEvent(
-        //    "takeDamage",
-        //    new Dictionary<string, object>
-        //    {
-        //        {"weaponDamage", weaponDamage }
-        //    }
-        //    );
-        //Debug.Log("analytics result: " + analyticsResult);
     }
     
     void OnSwing(InputAction.CallbackContext context)
