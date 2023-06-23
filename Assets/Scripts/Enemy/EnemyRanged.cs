@@ -38,7 +38,13 @@ public class EnemyRanged : MonoBehaviour
 
     void Shooting()
     {
-        var rotationAngle = Quaternion.LookRotation(_enemyAI.player.position - transform.position); // Gets the angle that has to be rotated.
+        //var rotationAngle = Quaternion.LookRotation(_enemyAI.player.position - transform.position); // Gets the angle that has to be rotated.
+        //transform.rotation = Quaternion.Slerp(transform.rotation, rotationAngle, Time.deltaTime * rotationSpeed);
+
+        var targetDirection = _enemyAI.player.position - transform.position;
+        targetDirection.y = 0; // Set the Y-component to zero to restrict rotation on the Y-axis
+        var rotationAngle = Quaternion.LookRotation(targetDirection);
+
         transform.rotation = Quaternion.Slerp(transform.rotation, rotationAngle, Time.deltaTime * rotationSpeed);
 
         if (!alreadyAttacked)
