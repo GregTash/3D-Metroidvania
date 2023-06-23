@@ -30,6 +30,14 @@ public class GlidePower : MonoBehaviour
         glideKeyPress.canceled -= GlideDisable;
     }
 
+    private void Update()
+    {
+        if(_playerMovement.TouchingSomething)
+        {
+            GlideDisableNoCallbackContext();
+        }
+    }
+
     void GlideEnable(InputAction.CallbackContext context)
     {
         if (_playerMovement.Grounded) return;

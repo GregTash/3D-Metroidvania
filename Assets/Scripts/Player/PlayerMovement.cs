@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerHeight, maxWalkableAngle = 45f;
     [SerializeField] LayerMask ignoreLayers;
     public bool Grounded { get; private set; } = false;
+    public bool TouchingSomething { get; private set; }
 
     [SerializeField] Transform orientation;
 
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         OnMove();
+        SlopeCheck();
     }
 
     private void OnEnable()
@@ -99,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
     void GroundCheck()
     {
         Grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ~ignoreLayers);
-        Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight + 3f, ~ignoreLayers);
 
         if (Grounded)
         {
@@ -109,6 +110,11 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.drag = 0;
         }
+    }
+
+    void SlopeCheck()
+    {
+        Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight + 3f, ~ignoreLayers);
 
         if (hit.transform != null)
         {
@@ -116,9 +122,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (slopeAngle >= maxWalkableAngle && !Grounded)
             {
-                if(_horizontalInput != 0 || _verticalInput != 0)
+                if (_horizontalInput != 0 || _verticalInput != 0)
                 {
-                    _rb.velocity = new Vector3(_rb.velocity.x, Physics.gravity.y, _rb.velocity.z);
+                    _rb.AddForce(Vector3.up * Physics.gravity.y);
                 }
             }
         }
@@ -134,5 +140,15 @@ public class PlayerMovement : MonoBehaviour
             Vector3 limitedVelocity = flatVelocity.normalized * moveSpeed;
             _rb.velocity = new Vector3(limitedVelocity.x, _rb.velocity.y, limitedVelocity.z);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        TouchingSomething = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        TouchingSomething = false;
     }
 }
