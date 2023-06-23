@@ -68,7 +68,7 @@ public class EnemyAI : MonoBehaviour
         float randomZ = Random.Range(-walkPointRange, walkPointRange);
         float randomX = Random.Range(-walkPointRange, walkPointRange);
 
-        walkPoint = new Vector3(transform.position.x + randomX, 0, transform.position.z + randomZ); // creates new patrol point
+        walkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ); // creates new patrol point
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, groundLayer)) // If below the walkpoint is a ground layer,
         {

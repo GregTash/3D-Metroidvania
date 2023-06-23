@@ -169,7 +169,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 3
+  walkPointRange: 2
   sightRange: 50
   playerInRange: 0
 --- !u!54 &3784699211529837584
