@@ -10,7 +10,7 @@ public class SwordController : MonoBehaviour
     [SerializeField] float appearForSeconds;
     [SerializeField] int weaponDamage;
     [SerializeField] float knockbackDistance;
-    bool swinging;
+    bool enemyDamaged;
 
     [SerializeField] PlayerInput PlayerInput;
     Collider _collider;
@@ -54,7 +54,13 @@ public class SwordController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             hitEnemy = other.gameObject;
-            DamageToEnemy();
+            Debug.Log(hitEnemy.name);
+            if (!enemyDamaged)
+            {
+                DamageToEnemy();
+                enemyDamaged = true;
+            }
+            StartCoroutine(IEnemyDamaged());
             //KnockbackEnemy();
             _audioSource.Play();
         }
@@ -89,6 +95,12 @@ public class SwordController : MonoBehaviour
     void KnockbackEnemy()
     {
         hitEnemy.GetComponent<Rigidbody>().AddForce(transform.forward * knockbackDistance);
+    }
+
+    IEnumerator IEnemyDamaged()
+    {
+        yield return new WaitForSeconds(.15f);
+        enemyDamaged = false;
     }
 
     void HitboxEnable()
