@@ -19,7 +19,7 @@ public class ThirdPersonCam : MonoBehaviour
 
     [SerializeField] CinemachineCameraOffset camOffset;
 
-    [SerializeField] GameObject crosshairObj;
+    public GameObject crosshairObj;
 
     public enum CameraMode
     {

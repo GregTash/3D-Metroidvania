@@ -11,6 +11,10 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public Inventory PlayerInventory { get; private set; }
     [SerializeField] PlayerInput playerInput;
 
+    [SerializeField] GameObject bowObject;
+    [SerializeField] GameObject swordObject;
+
+
     private void Start()
     {
         PlayerInventory = new Inventory();
@@ -22,6 +26,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         InputAction toggleInventory = playerInput.actions["Inventory"];
 
         toggleInventory.started += ToggleInventory;
+
+        // Draw Bow Enable
+        InputAction aimKeyPressed = playerInput.actions["Aim"];
+
+        aimKeyPressed.started += WeaponSwitch;
     }
 
     private void OnDisable()
@@ -29,6 +38,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         InputAction toggleInventory = playerInput.actions["Inventory"];
 
         toggleInventory.started -= ToggleInventory;
+
+        // Disable Bow Enable
+        InputAction aimKeyPressed = playerInput.actions["Aim"];
+
+        aimKeyPressed.started -= WeaponSwitch;
     }
 
     void Update()
@@ -42,6 +56,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             health = MaxHealth;
         }
+
     }
 
     void ToggleInventory(InputAction.CallbackContext context)
@@ -54,6 +69,23 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             uiInventory.gameObject.SetActive(false);
         }
+    }
+
+    void WeaponSwitch(InputAction.CallbackContext context)
+    {
+        float aimDown = playerInput.actions["Aim"].ReadValue<float>();
+        float threshold = 0.001f;
+        if (aimDown > 0)
+        {
+            bowObject.SetActive(true);
+            swordObject.SetActive(false);
+        }
+        else if (aimDown <= threshold)
+        {
+            bowObject.SetActive(false);
+            swordObject.SetActive(true);
+        }
+
     }
 
     public void TakeDamage(int damageAmount)
