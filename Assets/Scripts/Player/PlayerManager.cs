@@ -30,7 +30,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
         // Draw Bow Enable
         InputAction aimKeyPressed = playerInput.actions["Aim"];
 
-        aimKeyPressed.started += WeaponSwitch;
+        aimKeyPressed.performed += WeaponSwitch;
+        aimKeyPressed.canceled += WeaponSwitch;
     }
 
     private void OnDisable()
@@ -42,7 +43,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
         // Disable Bow Enable
         InputAction aimKeyPressed = playerInput.actions["Aim"];
 
-        aimKeyPressed.started -= WeaponSwitch;
+        aimKeyPressed.performed -= WeaponSwitch;
+        aimKeyPressed.canceled -= WeaponSwitch;
     }
 
     void Update()
@@ -73,19 +75,18 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     void WeaponSwitch(InputAction.CallbackContext context)
     {
-        float aimDown = playerInput.actions["Aim"].ReadValue<float>();
-        float threshold = 0.001f;
-        if (aimDown > 0)
+        //float aimDown = playerInput.actions["Aim"].ReadValue<float>();
+        //float threshold = 0.001f;
+        if (!bowObject.activeSelf)
         {
             bowObject.SetActive(true);
             swordObject.SetActive(false);
         }
-        else if (aimDown <= threshold)
+        else
         {
             bowObject.SetActive(false);
             swordObject.SetActive(true);
         }
-
     }
 
     public void TakeDamage(int damageAmount)
