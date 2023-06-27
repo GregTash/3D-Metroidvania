@@ -75,8 +75,6 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     void WeaponSwitch(InputAction.CallbackContext context)
     {
-        //float aimDown = playerInput.actions["Aim"].ReadValue<float>();
-        //float threshold = 0.001f;
         if (!bowObject.activeSelf)
         {
             bowObject.SetActive(true);

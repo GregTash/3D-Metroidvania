@@ -5,9 +5,11 @@ using UnityEngine.InputSystem;
 
 public class BowController : MonoBehaviour
 {
-    ThirdPersonCam _thirdPersonCam;
     [SerializeField] PlayerInput PlayerInput;
-    [SerializeField] GameObject swordPrefab;
+    [SerializeField] GameObject arrowSpawner;
+    [SerializeField] GameObject projectile;
+    [SerializeField] float shotPower;
+    PlayerControls _playerControls;
 
     // Start is called before the first frame update
     void Start()
@@ -15,18 +17,27 @@ public class BowController : MonoBehaviour
         transform.root.GetComponent<PlayerInput>();
     }
 
+    private void Awake()
+    {
+        _playerControls = new PlayerControls();
+        _playerControls.Enable();
+    }
+
     private void OnEnable()
     {
+        _playerControls.Default.Attack.started += OnShootBow;
         // Enable Shoot Bow
         InputAction shootKeyPressed = PlayerInput.actions["Attack"];
 
-        shootKeyPressed.started += OnShootBow;
-
         shootKeyPressed.Enable();
+
+        shootKeyPressed.started += OnShootBow;
     }
 
     private void OnDisable()
     {
+        _playerControls.Default.Attack.started -= OnShootBow;
+
         // Disable Shoot Bow
         InputAction shootKeyPressed = PlayerInput.actions["Attack"];
 
@@ -37,14 +48,8 @@ public class BowController : MonoBehaviour
 
     void OnShootBow(InputAction.CallbackContext context)
     {
-        if (context.started)
-        {
-            ShootBow();
-        }
-    }
-
-    void ShootBow()
-    {
-
+        Debug.Log("Shot");
+        Rigidbody arrow = Instantiate(projectile, arrowSpawner.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+        arrow.velocity = transform.forward * shotPower;
     }
 }

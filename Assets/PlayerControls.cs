@@ -65,7 +65,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Attack"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""3bdd1cb6-144e-4dec-8f27-01a0ab11eb21"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
