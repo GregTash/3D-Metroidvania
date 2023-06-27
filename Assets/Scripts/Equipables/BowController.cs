@@ -50,6 +50,6 @@ public class BowController : MonoBehaviour
     {
         Debug.Log("Shot");
         Rigidbody arrow = Instantiate(projectile, arrowSpawner.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-        arrow.velocity = transform.forward * shotPower;
+        arrow.velocity = Camera.main.transform.forward * shotPower;
     }
 }
