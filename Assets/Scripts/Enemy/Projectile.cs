@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
     Renderer _renderer;
     [SerializeField] LayerMask groundLayer;
 
+
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -27,13 +28,13 @@ public class Projectile : MonoBehaviour
         {
             damageable = playerManager.GetComponent<IDamageable>();
             damageable.TakeDamage(damageAmount); // Runs TakeDamage
-            AfterProjectileCollides();
+            PlayAudioThenDestroySelf();
         }
         if (damageTarget)
         {
             damageable = damageTarget.GetComponent<IDamageable>();
             damageable.TakeDamage(damageAmount);
-            AfterProjectileCollides();
+            PlayAudioThenDestroySelf();
         }
 
         if (groundLayer == (groundLayer | (1 << collision.gameObject.layer)))
@@ -42,7 +43,7 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    void AfterProjectileCollides()
+    void PlayAudioThenDestroySelf()
     {
         _audioSource.Play();
         _collider.enabled = false;
