@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,9 @@ public class PlayerManager : MonoBehaviour, IDamageable
     [SerializeField] InventoryUI uiInventory;
     public Inventory PlayerInventory { get; private set; }
     [SerializeField] PlayerInput playerInput;
+
+    public int arrowsLeft;
+    [SerializeField] TextMeshProUGUI arrowsLeftText;
 
     [SerializeField] GameObject bowObject;
     [SerializeField] GameObject swordObject;
@@ -59,6 +63,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
             health = MaxHealth;
         }
 
+        arrowsLeftText.text = "Arrows left: " + arrowsLeft;
     }
 
     void ToggleInventory(InputAction.CallbackContext context)
