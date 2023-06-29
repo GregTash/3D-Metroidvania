@@ -7,10 +7,11 @@ public class GlidePower : MonoBehaviour
     [SerializeField] PlayerInput playerInput;
     Rigidbody _playerRb;
     float _glideVelocity = -1f, _glideSpeed = 15f, _playerSpeed;
-    bool _disableUsage = false, _currentlyGliding = false;
+    public bool disableUsage = false;
+    bool _currentlyGliding = false;
     public float MaxGlidingStamina { get; private set; } = 100f;
     public float GlidingStamina { get; private set; }
-    float _staminaDrain = 35f, _staminaRegain = 70f;
+    float _staminaDrain = 35f, _staminaRegain = 100f;
 
     private void Start()
     {
@@ -38,8 +39,6 @@ public class GlidePower : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_currentlyGliding);
-
         if(_playerMovement.TouchingSomething || GlidingStamina <= 0)
         {
             GlideDisableNoCallbackContext();
@@ -47,7 +46,7 @@ public class GlidePower : MonoBehaviour
 
         if(_playerMovement.Grounded)
         {
-            _disableUsage = false;
+            IncreaseGlideStamina();
         }
 
         if(GlidingStamina > MaxGlidingStamina)
@@ -59,17 +58,12 @@ public class GlidePower : MonoBehaviour
         {
             DrainGlideStamina();
         }
-        else
-        {
-            IncreaseGlideStamina();
-        }
     }
 
     void GlideEnable(InputAction.CallbackContext context)
     {
-        if (_playerMovement.Grounded || _disableUsage) return;
+        if (_playerMovement.Grounded || disableUsage || _playerMovement.TouchingSomething) return;
 
-        _disableUsage = true;
         _currentlyGliding = true;
 
         _playerMovement.moveSpeed = _glideSpeed;
