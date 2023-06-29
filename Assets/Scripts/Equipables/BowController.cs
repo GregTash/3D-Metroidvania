@@ -10,12 +10,13 @@ public class BowController : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] float shotPower;
     PlayerControls _playerControls;
-    [SerializeField] PlayerManager _playerManager;
+    WeaponManager _weaponManager;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.root.GetComponent<PlayerInput>();
+        _weaponManager = GetComponentInParent<WeaponManager>();
     }
 
     private void Awake()
@@ -49,16 +50,16 @@ public class BowController : MonoBehaviour
 
     void OnShootBow(InputAction.CallbackContext context)
     {
-        if (_playerManager.arrowsLeft > 0)
+        if (_weaponManager.arrowsLeft > 0)
         {
             Debug.Log("Shot");
             Rigidbody arrow = Instantiate(projectile, arrowSpawner.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             arrow.velocity = Camera.main.transform.forward * shotPower;
-            _playerManager.arrowsLeft -= 1;
+            _weaponManager.arrowsLeft -= 1;
         }
-        else if (_playerManager.arrowsLeft <= 0)
+        else if (_weaponManager.arrowsLeft <= 0)
         {
-            Debug.Log("Can't shoot anymore, we have " + _playerManager.arrowsLeft + " arrows left");
+            Debug.Log("Can't shoot anymore, we have " + _weaponManager.arrowsLeft + " arrows left");
         }
     }
 }

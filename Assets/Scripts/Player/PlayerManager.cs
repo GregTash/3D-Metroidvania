@@ -12,13 +12,6 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public Inventory PlayerInventory { get; private set; }
     [SerializeField] PlayerInput playerInput;
 
-    public int arrowsLeft;
-    [SerializeField] TextMeshProUGUI arrowsLeftText;
-
-    [SerializeField] GameObject bowObject;
-    [SerializeField] GameObject swordObject;
-
-
     private void Start()
     {
         PlayerInventory = new Inventory();
@@ -30,12 +23,6 @@ public class PlayerManager : MonoBehaviour, IDamageable
         InputAction toggleInventory = playerInput.actions["Inventory"];
 
         toggleInventory.started += ToggleInventory;
-
-        // Draw Bow Enable
-        InputAction aimKeyPressed = playerInput.actions["Aim"];
-
-        aimKeyPressed.performed += WeaponSwitch;
-        aimKeyPressed.canceled += WeaponSwitch;
     }
 
     private void OnDisable()
@@ -43,12 +30,6 @@ public class PlayerManager : MonoBehaviour, IDamageable
         InputAction toggleInventory = playerInput.actions["Inventory"];
 
         toggleInventory.started -= ToggleInventory;
-
-        // Disable Bow Enable
-        InputAction aimKeyPressed = playerInput.actions["Aim"];
-
-        aimKeyPressed.performed -= WeaponSwitch;
-        aimKeyPressed.canceled -= WeaponSwitch;
     }
 
     void Update()
@@ -62,8 +43,6 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             health = MaxHealth;
         }
-
-        arrowsLeftText.text = "Arrows left: " + arrowsLeft;
     }
 
     void ToggleInventory(InputAction.CallbackContext context)
@@ -75,20 +54,6 @@ public class PlayerManager : MonoBehaviour, IDamageable
         else
         {
             uiInventory.gameObject.SetActive(false);
-        }
-    }
-
-    void WeaponSwitch(InputAction.CallbackContext context)
-    {
-        if (!bowObject.activeSelf)
-        {
-            bowObject.SetActive(true);
-            swordObject.SetActive(false);
-        }
-        else
-        {
-            bowObject.SetActive(false);
-            swordObject.SetActive(true);
         }
     }
 
