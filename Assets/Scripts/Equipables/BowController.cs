@@ -10,14 +10,12 @@ public class BowController : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] float shotPower;
     PlayerControls _playerControls;
-    WeaponManager _weaponManager;
     public int arrowsLeft;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.root.GetComponent<PlayerInput>();
-        _weaponManager = GetComponentInParent<WeaponManager>();
     }
 
     private void Awake()

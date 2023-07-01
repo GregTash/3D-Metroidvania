@@ -12,7 +12,6 @@ public class WeaponManager : MonoBehaviour
 
     BowController _bowController;
 
-
     [SerializeField] TextMeshProUGUI playerArrowsLeftText;
 
     private void OnEnable()
@@ -47,6 +46,7 @@ public class WeaponManager : MonoBehaviour
 
     void WeaponSwitch(InputAction.CallbackContext context)
     {
+
         if (!bowObject.activeSelf)
         {
             bowObject.SetActive(true);
@@ -57,5 +57,10 @@ public class WeaponManager : MonoBehaviour
             bowObject.SetActive(false);
             swordObject.SetActive(true);
         }
+    }
+
+    void ResetSwordPosition()
+    {
+
     }
 }
