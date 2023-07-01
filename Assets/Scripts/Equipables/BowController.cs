@@ -11,6 +11,7 @@ public class BowController : MonoBehaviour
     [SerializeField] float shotPower;
     PlayerControls _playerControls;
     WeaponManager _weaponManager;
+    public int arrowsLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -50,16 +51,16 @@ public class BowController : MonoBehaviour
 
     void OnShootBow(InputAction.CallbackContext context)
     {
-        if (_weaponManager.arrowsLeft > 0)
+        if (arrowsLeft > 0)
         {
             Debug.Log("Shot");
             Rigidbody arrow = Instantiate(projectile, arrowSpawner.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             arrow.velocity = Camera.main.transform.forward * shotPower;
-            _weaponManager.arrowsLeft -= 1;
+            arrowsLeft -= 1;
         }
-        else if (_weaponManager.arrowsLeft <= 0)
+        else if (arrowsLeft <= 0)
         {
-            Debug.Log("Can't shoot anymore, we have " + _weaponManager.arrowsLeft + " arrows left");
+            Debug.Log("Can't shoot anymore, we have " + arrowsLeft + " arrows left");
         }
     }
 }

@@ -10,7 +10,9 @@ public class WeaponManager : MonoBehaviour
     public GameObject swordObject;
     [SerializeField] PlayerInput playerInput;
 
-    public int arrowsLeft;
+    BowController _bowController;
+
+
     [SerializeField] TextMeshProUGUI playerArrowsLeftText;
 
     private void OnEnable()
@@ -34,13 +36,13 @@ public class WeaponManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _bowController = transform.GetChild(1).gameObject.GetComponent<BowController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        playerArrowsLeftText.text = "Arrows left: " + arrowsLeft;
+        playerArrowsLeftText.text = "Arrows left: " + _bowController.arrowsLeft;
     }
 
     void WeaponSwitch(InputAction.CallbackContext context)
