@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: 5973162948024621448}
   - component: {fileID: 5973162948024621449}
   - component: {fileID: 3247495052742451703}
+  - component: {fileID: 8081113681712101314}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -337,6 +338,21 @@ MonoBehaviour:
   health: 100
   uiInventory: {fileID: 0}
   playerInput: {fileID: 5973162948024621448}
+--- !u!114 &8081113681712101314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5973162948024621444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb486e0498fc0248ac10c0c06f9115b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseUI: {fileID: 0}
+  gameUI: {fileID: 0}
+  playerInput: {fileID: 0}
 --- !u!1 &5973162948140353398
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,8 +430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f772dc5486738bd48bd2efc43f096f67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bowObjectSlot: {fileID: 0}
-  swordObjectSlot: {fileID: 0}
   bowObject: {fileID: 3135120137753095343}
   swordObject: {fileID: 3843186098784410264}
   playerInput: {fileID: 5973162948024621448}
