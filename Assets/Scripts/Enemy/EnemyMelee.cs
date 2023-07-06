@@ -26,8 +26,8 @@ public class EnemyMelee : MonoBehaviour
                 damageable.TakeDamage(damageAmount); // Runs TakeDamage
                 _audioSource.Play();
                 takenDamage = true;
+                StartCoroutine(ITimeBetweenDamage());
             }
-            StartCoroutine(ITimeBetweenDamage());
         }
     }
 
