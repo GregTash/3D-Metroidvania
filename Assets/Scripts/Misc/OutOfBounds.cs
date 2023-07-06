@@ -9,7 +9,14 @@ public class OutOfBounds : MonoBehaviour
     {
         if(_playerTransform.position.y <= transform.position.y)
         {
-            _playerTransform.GetComponent<PlayerManager>().health = 0;
+            if (_playerTransform.GetComponent<PlayerManager>().respawnPoint != null)
+            {
+                _playerTransform.position = _playerTransform.GetComponent<PlayerManager>().respawnPoint.position;
+            }
+            else
+            {
+                _playerTransform.GetComponent<PlayerManager>().health = 0;
+            }
         }
     }
 }
