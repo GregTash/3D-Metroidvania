@@ -18,6 +18,11 @@ public class Projectile : MonoBehaviour
         _renderer = GetComponent<Renderer>();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         IDamageable damageable;

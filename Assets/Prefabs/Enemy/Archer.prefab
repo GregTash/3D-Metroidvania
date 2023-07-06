@@ -388,7 +388,7 @@ MonoBehaviour:
   projectile: {fileID: 4763633859428660781, guid: 7b8fa381ed7762146bbf83619f0fd8b5,
     type: 3}
   projectileSpawner: {fileID: 6322065011223311943}
-  shotPower: 100
+  shotPower: 40
 --- !u!1 &7806225244273289552
 GameObject:
   m_ObjectHideFlags: 0

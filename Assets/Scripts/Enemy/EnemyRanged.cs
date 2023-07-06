@@ -10,9 +10,8 @@ public class EnemyRanged : MonoBehaviour
     /// </summary>
 
     [SerializeField] EnemyAI _enemyAI;
-    Rigidbody _rb;
     NavMeshAgent _navMeshAgent;
-
+    Rigidbody _rb;
     EnemyBow _enemyBow;
 
 
