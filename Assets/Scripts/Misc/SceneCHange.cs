@@ -5,14 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    public GameObject endPanel;
-
-    private void OnTriggerEnter(Collider other)
+    public void StartGame()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            endPanel.SetActive(true);
-            Time.timeScale = 0;
-        }
+        SceneManager.LoadScene("MountainPath");
     }
 }
