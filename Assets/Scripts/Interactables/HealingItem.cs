@@ -10,7 +10,7 @@ public class HealingItem : MonoBehaviour
     {
         other.transform.TryGetComponent(out PlayerManager _playerManager);
 
-        _playerManager.health += healingAmount;
+        if(_playerManager) _playerManager.health += healingAmount;
 
         Destroy(gameObject);
     }
