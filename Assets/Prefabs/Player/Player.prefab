@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 80d0c91d5cc8b6449ac4df1692cc73fe, type: 2}
+  - {fileID: 2100000, guid: af912e0d0d9f34f4b959f672862af590, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -321,7 +321,7 @@ MonoBehaviour:
   maxWalkableAngle: 45
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 86
+    m_Bits: 1110
   orientation: {fileID: 5973162948140353399}
 --- !u!114 &3247495052742451703
 MonoBehaviour:
@@ -338,6 +338,7 @@ MonoBehaviour:
   health: 100
   uiInventory: {fileID: 0}
   playerInput: {fileID: 5973162948024621448}
+  respawnPoint: {fileID: 0}
 --- !u!114 &8081113681712101314
 MonoBehaviour:
   m_ObjectHideFlags: 0

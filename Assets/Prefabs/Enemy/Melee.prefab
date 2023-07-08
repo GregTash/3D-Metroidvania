@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6797059787220208040}
   - component: {fileID: 8769229590943823496}
   - component: {fileID: 8946477615265043673}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: DirectionObj
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7149903391710761735}
   - component: {fileID: 7149903391710761730}
   - component: {fileID: 7149903391710761729}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 1704302967}
   - component: {fileID: 1001123147871351833}
   - component: {fileID: 7734627296462516407}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Melee
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -540,6 +540,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845253472539005922, guid: 398be69458e1d0e44b44373d0af01994,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085289236300183467, guid: 398be69458e1d0e44b44373d0af01994,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314811609871199932, guid: 398be69458e1d0e44b44373d0af01994,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888855114672368152, guid: 398be69458e1d0e44b44373d0af01994,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891879793063195822, guid: 398be69458e1d0e44b44373d0af01994,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7777453995739566263, guid: 398be69458e1d0e44b44373d0af01994,
         type: 3}

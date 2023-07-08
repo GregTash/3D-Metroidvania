@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3784699211294025422}
   - component: {fileID: 3784699211294025419}
   - component: {fileID: 3784699211294025416}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EnemyObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 6510173796172595664}
   - component: {fileID: 6322065011812921300}
   - component: {fileID: 7905794293614414608}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Archer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6322065011223311942}
   - component: {fileID: 842287433}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: ProjectileSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 3975945608716702022}
   - component: {fileID: 8323230680380406589}
   - component: {fileID: 5471365990907254075}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: DirectionObj
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -593,6 +593,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1845253472539005922, guid: 398be69458e1d0e44b44373d0af01994,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3085289236300183467, guid: 398be69458e1d0e44b44373d0af01994,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5314811609871199932, guid: 398be69458e1d0e44b44373d0af01994,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888855114672368152, guid: 398be69458e1d0e44b44373d0af01994,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6891879793063195822, guid: 398be69458e1d0e44b44373d0af01994,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8069088996963492040, guid: 398be69458e1d0e44b44373d0af01994,
         type: 3}
