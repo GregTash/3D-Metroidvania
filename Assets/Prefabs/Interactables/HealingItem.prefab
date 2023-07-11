@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8799545357903724945}
   - component: {fileID: 5432766239174347584}
   - component: {fileID: 4697686369549279203}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HealingItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 1862397976397946791}
   - component: {fileID: 5595774564602380113}
   - component: {fileID: 4847867328985844814}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cross2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 4214497000535356634}
   - component: {fileID: 7574215451147009994}
   - component: {fileID: 8390290948115733081}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cross1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
