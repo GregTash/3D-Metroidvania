@@ -27,6 +27,7 @@ public class CutsceneManager : MonoBehaviour
         _camBrain.enabled = false;
 
         _camTransform.position = transform.position;
+        _camTransform.rotation = transform.rotation;
         _camTransform.parent = transform;
 
         _cutsceneAnimation.Play();
