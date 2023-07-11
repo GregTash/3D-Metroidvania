@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public int health = 100;
     public int MaxHealth { get; private set; } = 100;
 
+    public bool allowDamage = true;
+
     [SerializeField] InventoryUI uiInventory;
     public Inventory PlayerInventory { get; private set; }
     [SerializeField] PlayerInput playerInput;
@@ -61,6 +63,6 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public void TakeDamage(int damageAmount)
     {
-        health -= damageAmount;
+        if(allowDamage) health -= damageAmount;
     }
 }
