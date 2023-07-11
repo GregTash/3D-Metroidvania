@@ -315,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectInput: 1
   moveSpeed: 7
+  sprintSpeed: 15
   groundDrag: 5
   jumpForce: 17.5
   playerHeight: 2
