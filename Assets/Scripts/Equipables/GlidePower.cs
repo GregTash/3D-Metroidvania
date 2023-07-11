@@ -65,7 +65,7 @@ public class GlidePower : MonoBehaviour
 
     void GlideEnable(InputAction.CallbackContext context)
     {
-        if (_playerMovement.Grounded || disableUsage || _playerMovement.TouchingSomething) return;
+        if (_playerMovement.Grounded || disableUsage || _playerMovement.TouchingSomething || GlidingStamina <= 0) return;
 
         _currentlyGliding = true;
 
