@@ -7,10 +7,14 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Movement")]
     public float moveSpeed;
+    float originalMoveSpeed;
+    [SerializeField] float sprintSpeed;
 
     [SerializeField] float groundDrag;
 
     [SerializeField] float jumpForce;
+
+    bool sprinting = false;
 
     [Header("GroundCheck")]
     [SerializeField] float playerHeight, maxWalkableAngle = 45f;
@@ -34,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
 
         PlayerInput = GetComponent<PlayerInput>();
+
+        originalMoveSpeed = moveSpeed;
     }
 
     void Update()
@@ -54,15 +60,21 @@ public class PlayerMovement : MonoBehaviour
     private void OnEnable()
     {
         InputAction jumpKeyPress = PlayerInput.actions["Jump"];
+        InputAction sprintKeyPress = PlayerInput.actions["Sprint"];
 
         jumpKeyPress.started += OnJump;
+        sprintKeyPress.started += SprintActivate;
+        sprintKeyPress.canceled += SprintDeactivate;
     }
 
     private void OnDisable()
     {
         InputAction jumpKeyPress = PlayerInput.actions["Jump"];
+        InputAction sprintKeyPress = PlayerInput.actions["Sprint"];
 
         jumpKeyPress.started -= OnJump;
+        sprintKeyPress.started -= SprintActivate;
+        sprintKeyPress.canceled -= SprintDeactivate;
     }
 
     void GetInput()
@@ -109,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _rb.drag = 0;
+            if(sprinting) SprintDeactivateNoContext();
         }
     }
 
@@ -140,6 +153,23 @@ public class PlayerMovement : MonoBehaviour
             Vector3 limitedVelocity = flatVelocity.normalized * moveSpeed;
             _rb.velocity = new Vector3(limitedVelocity.x, _rb.velocity.y, limitedVelocity.z);
         }
+    }
+
+    void SprintActivate(InputAction.CallbackContext context)
+    {
+        moveSpeed = sprintSpeed;
+        sprinting = true;
+    }
+
+    void SprintDeactivate(InputAction.CallbackContext context)
+    {
+        SprintDeactivateNoContext();
+    }
+
+    void SprintDeactivateNoContext()
+    {
+        moveSpeed = originalMoveSpeed;
+        sprinting = false;
     }
 
     private void OnCollisionEnter(Collision collision)

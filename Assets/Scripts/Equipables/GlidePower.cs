@@ -41,7 +41,10 @@ public class GlidePower : MonoBehaviour
     {
         if(_playerMovement.TouchingSomething || GlidingStamina <= 0)
         {
-            GlideDisableNoCallbackContext();
+            if(_currentlyGliding)
+            {
+                GlideDisableNoCallbackContext();
+            }
         }
 
         if(_playerMovement.Grounded)
