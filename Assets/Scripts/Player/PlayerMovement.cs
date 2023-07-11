@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float jumpForce;
 
-    bool sprinting = false;
+    bool _sprinting = false;
 
     [Header("GroundCheck")]
     [SerializeField] float playerHeight, maxWalkableAngle = 45f;
@@ -121,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _rb.drag = 0;
-            if(sprinting) SprintDeactivateNoContext();
+            if(_sprinting) SprintDeactivateNoContext();
         }
     }
 
@@ -158,7 +158,7 @@ public class PlayerMovement : MonoBehaviour
     void SprintActivate(InputAction.CallbackContext context)
     {
         moveSpeed = sprintSpeed;
-        sprinting = true;
+        _sprinting = true;
     }
 
     void SprintDeactivate(InputAction.CallbackContext context)
@@ -169,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
     void SprintDeactivateNoContext()
     {
         moveSpeed = originalMoveSpeed;
-        sprinting = false;
+        _sprinting = false;
     }
 
     private void OnCollisionEnter(Collision collision)

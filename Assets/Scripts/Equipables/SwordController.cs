@@ -11,6 +11,7 @@ public class SwordController : MonoBehaviour
     [SerializeField] int weaponDamage;
     [SerializeField] float knockbackDistance;
     bool enemyDamaged;
+    bool _swinging = false;
 
     [SerializeField] PlayerInput PlayerInput;
     Collider _collider;
@@ -47,6 +48,11 @@ public class SwordController : MonoBehaviour
         attackKeyPressed.Disable();
 
         attackKeyPressed.started -= OnSwing;
+    }
+
+    private void Update()
+    {
+        AutoDisableSwing();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -92,6 +98,19 @@ public class SwordController : MonoBehaviour
         _animator.Play("Swing Sword");
     }
 
+    void AutoDisableSwing()
+    {
+        if(_animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+        {
+            _swinging = false;
+        }
+
+        if(!_swinging)
+        {
+            HitboxDisable();
+        }
+    }
+
     void KnockbackEnemy()
     {
         hitEnemy.GetComponent<Rigidbody>().AddForce(transform.forward * knockbackDistance);
@@ -106,10 +125,12 @@ public class SwordController : MonoBehaviour
     void HitboxEnable()
     {
         _collider.enabled = true;
+        _swinging = true;
     }
 
     void HitboxDisable()
     {
         _collider.enabled = false;
+        _swinging = false;
     }
 }
