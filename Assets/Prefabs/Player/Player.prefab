@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 5973162947974437031}
   m_Layer: 6
   m_Name: DirectionObj
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -337,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  allowDamage: 1
   uiInventory: {fileID: 0}
   playerInput: {fileID: 5973162948024621448}
   respawnPoint: {fileID: 0}
@@ -354,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseUI: {fileID: 0}
   gameUI: {fileID: 0}
-  playerInput: {fileID: 0}
+  playerInput: {fileID: 5973162948024621448}
 --- !u!1 &5973162948140353398
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,7 +367,7 @@ GameObject:
   - component: {fileID: 5973162948140353399}
   m_Layer: 6
   m_Name: Orientation
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -434,6 +435,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bowObject: {fileID: 3135120137753095343}
   swordObject: {fileID: 3843186098784410264}
+  weaponList:
+  - {fileID: 3843186098784410264}
+  - {fileID: 3135120137753095343}
   playerInput: {fileID: 5973162948024621448}
   playerArrowsLeftText: {fileID: 0}
 --- !u!1001 &2048840243731846463
@@ -446,8 +450,14 @@ PrefabInstance:
     - target: {fileID: -6293114878773651693, guid: 614d24605e8ceb34f812662c87edb324,
         type: 3}
       propertyPath: arrowsLeft
-      value: 444
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -6293114878773651693, guid: 614d24605e8ceb34f812662c87edb324,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 4763633859428660781, guid: f7aff66b0d440954ebaf1b6893073042,
+        type: 3}
     - target: {fileID: -6293114878773651693, guid: 614d24605e8ceb34f812662c87edb324,
         type: 3}
       propertyPath: PlayerInput
@@ -722,7 +732,7 @@ PrefabInstance:
     - target: {fileID: 7658322487666652244, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
         type: 3}
       propertyPath: knockbackDistance
-      value: 750
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b4c05db54f24342b4dbdc3d63adfdc, type: 3}
