@@ -46,9 +46,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if(detectInput) GetInput();
 
-        GroundCheck();
-
         MoveSpeedControl();
+
+        GroundCheck();
     }
 
     private void FixedUpdate()
@@ -116,12 +116,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Grounded)
         {
+            if (!_sprinting) moveSpeed = originalMoveSpeed;
             _rb.drag = groundDrag;
         }
         else
         {
             _rb.drag = 0;
-            if(_sprinting) SprintDeactivateNoContext();
         }
     }
 
@@ -157,8 +157,11 @@ public class PlayerMovement : MonoBehaviour
 
     void SprintActivate(InputAction.CallbackContext context)
     {
-        moveSpeed = sprintSpeed;
-        _sprinting = true;
+        if(Grounded)
+        {
+            moveSpeed = sprintSpeed;
+            _sprinting = true;
+        }
     }
 
     void SprintDeactivate(InputAction.CallbackContext context)
@@ -168,7 +171,6 @@ public class PlayerMovement : MonoBehaviour
 
     void SprintDeactivateNoContext()
     {
-        moveSpeed = originalMoveSpeed;
         _sprinting = false;
     }
 

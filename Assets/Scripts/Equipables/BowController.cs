@@ -51,14 +51,9 @@ public class BowController : MonoBehaviour
     {
         if (arrowsLeft > 0)
         {
-            Debug.Log("Shot");
             Rigidbody arrow = Instantiate(projectile, arrowSpawner.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             arrow.velocity = Camera.main.transform.forward * shotPower;
             arrowsLeft -= 1;
-        }
-        else if (arrowsLeft <= 0)
-        {
-            Debug.Log("Can't shoot anymore, we have " + arrowsLeft + " arrows left");
         }
     }
 }

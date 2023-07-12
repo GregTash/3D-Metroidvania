@@ -82,7 +82,9 @@ public class GlidePower : MonoBehaviour
 
     void GlideDisableNoCallbackContext()
     {
-        _playerRb.useGravity = true;
+        if (!_currentlyGliding) return;
+
+            _playerRb.useGravity = true;
         _playerMovement.moveSpeed = _playerSpeed;
 
         _currentlyGliding = false;

@@ -28,9 +28,11 @@ public class CutsceneManager : MonoBehaviour
 
     void Update()
     {
-        if(_cutsceneEnabled && !_cutsceneAnimation.isPlaying)
+        if(_cutsceneEnabled)
         {
-            DisableCutscene();
+            _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, 0);
+
+            if(!_cutsceneAnimation.isPlaying) DisableCutscene();
         }
     }
 
