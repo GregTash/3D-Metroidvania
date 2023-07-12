@@ -177,6 +177,8 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         TouchingSomething = true;
+
+        if (Grounded) _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
     }
 
     private void OnCollisionExit(Collision collision)
