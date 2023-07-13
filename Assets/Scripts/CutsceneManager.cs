@@ -48,7 +48,7 @@ public class CutsceneManager : MonoBehaviour
         _cutsceneEnabled = true;
 
         _playerMovement.detectInput = false;
-        _playerManager.allowDamage = true;
+        _playerManager.allowDamage = false;
         _playerRb.velocity = Vector3.zero;
 
         _cutsceneAnimation.Play();
@@ -63,6 +63,6 @@ public class CutsceneManager : MonoBehaviour
         _camTransform.parent = null;
 
         _playerMovement.detectInput = true;
-        _playerManager.allowDamage = false;
+        _playerManager.allowDamage = true;
     }
 }

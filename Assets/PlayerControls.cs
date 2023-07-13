@@ -107,6 +107,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Stomp"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d1aeb09-eb6a-4dc3-984c-c3f7523605e3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -263,6 +272,17 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da484ebe-4279-4687-8a5e-0687f3009411"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Stomp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -280,6 +300,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Default_Pause = m_Default.FindAction("Pause", throwIfNotFound: true);
         m_Default_Interact = m_Default.FindAction("Interact", throwIfNotFound: true);
         m_Default_Sprint = m_Default.FindAction("Sprint", throwIfNotFound: true);
+        m_Default_Stomp = m_Default.FindAction("Stomp", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -350,6 +371,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Default_Pause;
     private readonly InputAction m_Default_Interact;
     private readonly InputAction m_Default_Sprint;
+    private readonly InputAction m_Default_Stomp;
     public struct DefaultActions
     {
         private @PlayerControls m_Wrapper;
@@ -363,6 +385,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Default_Pause;
         public InputAction @Interact => m_Wrapper.m_Default_Interact;
         public InputAction @Sprint => m_Wrapper.m_Default_Sprint;
+        public InputAction @Stomp => m_Wrapper.m_Default_Stomp;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -399,6 +422,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
+            @Stomp.started += instance.OnStomp;
+            @Stomp.performed += instance.OnStomp;
+            @Stomp.canceled += instance.OnStomp;
         }
 
         private void UnregisterCallbacks(IDefaultActions instance)
@@ -430,6 +456,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
+            @Stomp.started -= instance.OnStomp;
+            @Stomp.performed -= instance.OnStomp;
+            @Stomp.canceled -= instance.OnStomp;
         }
 
         public void RemoveCallbacks(IDefaultActions instance)
@@ -458,5 +487,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnStomp(InputAction.CallbackContext context);
     }
 }
