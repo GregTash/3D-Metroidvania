@@ -60,7 +60,6 @@ public class SwordController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             hitEnemy = other.gameObject;
-            Debug.Log(hitEnemy.name);
             if (!enemyDamaged)
             {
                 DamageToEnemy();

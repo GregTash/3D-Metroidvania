@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class GlidePower : MonoBehaviour
 {
     PlayerMovement _playerMovement;
+    AudioSource _audioSource;
     [SerializeField] PlayerInput playerInput;
     Rigidbody _playerRb;
     float _glideVelocity = -1f, _glideSpeed = 15f, _playerSpeed;
@@ -21,6 +22,8 @@ public class GlidePower : MonoBehaviour
         _playerSpeed = _playerMovement.moveSpeed;
 
         GlidingStamina = MaxGlidingStamina;
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -69,6 +72,8 @@ public class GlidePower : MonoBehaviour
 
         _currentlyGliding = true;
 
+        _audioSource.Play();
+
         _playerMovement.moveSpeed = _glideSpeed;
 
         _playerRb.useGravity = false;
@@ -84,10 +89,12 @@ public class GlidePower : MonoBehaviour
     {
         if (!_currentlyGliding) return;
 
-            _playerRb.useGravity = true;
+        _playerRb.useGravity = true;
         _playerMovement.moveSpeed = _playerSpeed;
 
         _currentlyGliding = false;
+
+        _audioSource.Stop();
 
         if (GlidingStamina < 0)
         {

@@ -10,6 +10,8 @@ public class StompPower : MonoBehaviour
     int _stompDamage = 10;
     Collider _collider;
     Rigidbody _playerRb;
+    AudioSource _audioSource;
+    [SerializeField] AudioSource swooshAudioSource, stompAudioSource;
 
     struct Enemy
     {
@@ -42,6 +44,8 @@ public class StompPower : MonoBehaviour
     {
         _animation = GetComponent<Animation>();
         _collider = GetComponent<Collider>();
+        _audioSource = GetComponent<AudioSource>();
+
         _playerRb = transform.root.GetComponent<Rigidbody>();
         _playerMovement = transform.root.GetComponent<PlayerMovement>();
     }
@@ -56,7 +60,11 @@ public class StompPower : MonoBehaviour
         {
             _playerRb.velocity = new Vector3(0, -diveForce, 0);
 
-            if(!_animation.isPlaying && _playerMovement.TouchingSomething) _animation.Play();
+            if (!_animation.isPlaying && _playerMovement.TouchingSomething)
+            {
+                stompAudioSource.Play();
+                _animation.Play();
+            }
         }
     }
 
@@ -79,6 +87,7 @@ public class StompPower : MonoBehaviour
             }
 
             other.GetComponent<IDamageable>().TakeDamage(_stompDamage);
+            _audioSource.Play();
 
             newEnemy.alreadyHit = true;
 
@@ -91,6 +100,7 @@ public class StompPower : MonoBehaviour
         if (_stomping) return;
         if (closestObjectDistance < 6f) return;
 
+        swooshAudioSource.Play();
         _stomping = true;
     }
 
@@ -110,8 +120,6 @@ public class StompPower : MonoBehaviour
         }
 
         closestObjectDistance = Vector3.Distance(transform.position, hit.point);
-
-        Debug.Log(hit.transform.name + " " + closestObjectDistance);
     }
 
     void ClearEnemyList()
