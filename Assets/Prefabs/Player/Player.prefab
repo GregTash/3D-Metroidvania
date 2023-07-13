@@ -702,6 +702,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   diveForce: 45
+  swooshAudioSource: {fileID: 0}
+  stompAudioSource: {fileID: 0}
   playerInput: {fileID: 5973162948024621448}
   ignoreLayers:
     serializedVersion: 2
@@ -1219,11 +1221,6 @@ PrefabInstance:
       propertyPath: PlayerInput
       value: 
       objectReference: {fileID: 5973162948024621448}
-    - target: {fileID: 7658322487666652244, guid: 23b4c05db54f24342b4dbdc3d63adfdc,
-        type: 3}
-      propertyPath: knockbackDistance
-      value: 4
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23b4c05db54f24342b4dbdc3d63adfdc, type: 3}
 --- !u!1 &3843186098784410264 stripped

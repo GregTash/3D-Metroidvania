@@ -21,6 +21,7 @@ public class SwordController : MonoBehaviour
     Camera _cam;
 
     AudioSource _audioSource;
+    [SerializeField] AudioSource swingSoundAudioSource;
 
     private void Awake()
     {
@@ -95,6 +96,7 @@ public class SwordController : MonoBehaviour
     void Swing()
     {
         _animator.Play("Swing Sword");
+        swingSoundAudioSource.Play();
     }
 
     void AutoDisableSwing()

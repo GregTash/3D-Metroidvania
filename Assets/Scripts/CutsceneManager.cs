@@ -30,9 +30,10 @@ public class CutsceneManager : MonoBehaviour
     {
         if(_cutsceneEnabled)
         {
-            _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, 0);
+            if (!_playerMovement.Grounded) _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, 0);
+            else _playerRb.velocity = Vector3.zero;
 
-            if(!_cutsceneAnimation.isPlaying) DisableCutscene();
+            if (!_cutsceneAnimation.isPlaying) DisableCutscene();
         }
     }
 

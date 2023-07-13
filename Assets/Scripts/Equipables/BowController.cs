@@ -12,10 +12,13 @@ public class BowController : MonoBehaviour
     PlayerControls _playerControls;
     public int arrowsLeft;
 
+    AudioSource _audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         transform.root.GetComponent<PlayerInput>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void Awake()
@@ -51,6 +54,8 @@ public class BowController : MonoBehaviour
     {
         if (arrowsLeft > 0)
         {
+            _audioSource.Play();
+
             Rigidbody arrow = Instantiate(projectile, arrowSpawner.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             arrow.velocity = Camera.main.transform.forward * shotPower;
             arrowsLeft -= 1;
