@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float jumpForce;
 
+    [SerializeField] float airDrag = 1;
+
     bool _sprinting = false;
 
     [Header("GroundCheck")]
@@ -33,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     public PlayerInput PlayerInput { get; private set; }
 
+    bool _stuckToGround = false;
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -45,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if(detectInput) GetInput();
+
+        AirDrag();
 
         MoveSpeedControl();
 
@@ -83,12 +89,23 @@ public class PlayerMovement : MonoBehaviour
         _verticalInput = PlayerInput.actions["Vertical"].ReadValue<float>();
     }
 
+    void AirDrag()
+    {
+        float calculatedAirDrag = 1 + (airDrag * Time.deltaTime);
+
+        if (_horizontalInput == 0 && _verticalInput == 0 && !Grounded)
+        {
+            _rb.velocity = new Vector3(_rb.velocity.x / calculatedAirDrag, _rb.velocity.y, _rb.velocity.z / calculatedAirDrag);
+        }
+    }
+
     void OnMove()
     {
         //Calculate the movement direction and then move forward.
         _moveDir = orientation.forward * _verticalInput + orientation.right * _horizontalInput;
 
-        _rb.AddForce(_moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
+        if (Grounded) _rb.AddForce(_moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
+        if(!Grounded) _rb.AddForce(_moveDir.normalized * originalMoveSpeed * 10f, ForceMode.Force);
     }
 
     void Jump()
@@ -178,11 +195,18 @@ public class PlayerMovement : MonoBehaviour
     {
         TouchingSomething = true;
 
-        if (Grounded) _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+        if (Grounded && !_stuckToGround)
+        {
+            _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+
+            _stuckToGround = true;
+        }
     }
 
     private void OnCollisionExit(Collision collision)
     {
         TouchingSomething = false;
+
+        if(!Grounded) _stuckToGround = false;
     }
 }
