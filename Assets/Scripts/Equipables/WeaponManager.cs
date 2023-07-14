@@ -20,8 +20,6 @@ public class WeaponManager : MonoBehaviour
     //TODO: Make an integer that holds the weapon select ID (E.G. if you press 2, you will select weapon 2 from the list)
     //TODO: Enable and disable weapons based on your keypress (E.G. You select weapon 2, it enables the bow, and disables the sword and bombs)
 
-
-
     private void OnEnable()
     {
         // Draw Bow Enable
