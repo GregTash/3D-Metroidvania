@@ -12,28 +12,24 @@ public class PlayerInteract : MonoBehaviour
 
     [SerializeField] UnityEvent onInteractEvent;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        PlayerInput = GetComponent<PlayerInput>();
-    }
-
     private void OnEnable()
     {
-        InputAction interactKeyPressed = PlayerInput.actions["Interact"];
+        if (PlayerInput != null)
+        {
+            InputAction interactKeyPressed = PlayerInput.actions["Interact"];
 
-        interactKeyPressed.started += OnInteract;
-
-        interactKeyPressed.Enable();
+            interactKeyPressed.started += OnInteract;
+        }
     }
 
     private void OnDisable()
     {
-        InputAction interactKeyPressed = PlayerInput.actions["Interact"];
+        if (PlayerInput != null)
+        {
+            InputAction interactKeyPressed = PlayerInput.actions["Interact"];
 
-        interactKeyPressed.started -= OnInteract;
-
-        interactKeyPressed.Disable();
+            interactKeyPressed.started -= OnInteract;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
