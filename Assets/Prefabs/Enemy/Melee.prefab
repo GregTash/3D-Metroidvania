@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  arrowPrefab: {fileID: 0}
 --- !u!82 &1001123147871351833
 AudioSource:
   m_ObjectHideFlags: 0
