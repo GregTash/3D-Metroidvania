@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public Inventory PlayerInventory { get; private set; }
     [SerializeField] PlayerInput playerInput;
 
+    public int collectables = 0;
+
     [HideInInspector] public Transform respawnPoint;
 
     private void Start()
