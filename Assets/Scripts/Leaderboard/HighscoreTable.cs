@@ -6,7 +6,7 @@ public class HighscoreTable : MonoBehaviour
 {
     Transform _entryContainer;
     Transform _entryTemplate;
-    List<HighscoreEntry> _highscoreEntryList;
+    public List<HighscoreEntry> highscoreEntryList = new List<HighscoreEntry>();
     List<Transform> _highscoreEntryTransformList;
 
     private void Awake()
@@ -16,31 +16,40 @@ public class HighscoreTable : MonoBehaviour
 
         _entryTemplate.gameObject.SetActive(false);
 
-        _highscoreEntryList = new List<HighscoreEntry>()
-        {
-            new HighscoreEntry{ name = "Greg", time = 113.52f},
-            new HighscoreEntry{ name = "Bob", time = 12.55f},
-            new HighscoreEntry{ name = "Trevor", time = 1123.32f},
-            new HighscoreEntry{ name = "Billy", time = 2567.12f},
-            new HighscoreEntry{ name = "Chad", time = 876.43f}
-        };
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
-        for(int i = 0; i < _highscoreEntryList.Count; i++)
+        for(int i = 0; i < highscoreEntryList.Count; i++)
         {
-            for(int j = i+1; j < _highscoreEntryList.Count; j++)
+            for(int j = i+1; j < highscoreEntryList.Count; j++)
             {
-                if(_highscoreEntryList[j].time < _highscoreEntryList[i].time)
+                if(highscoreEntryList[j].score < highscoreEntryList[i].score)
                 {
                     //Swap
-                    HighscoreEntry tmp = _highscoreEntryList[i];
-                    _highscoreEntryList[i] = _highscoreEntryList[j];
-                    _highscoreEntryList[j] = tmp;
+                    HighscoreEntry tmp = highscoreEntryList[i];
+                    highscoreEntryList[i] = highscoreEntryList[j];
+                    highscoreEntryList[j] = tmp;
                 }
             }
         }
 
+        //UpdateHighscores();
+    }
+
+    public void UpdateHighscores()
+    {
         _highscoreEntryTransformList = new List<Transform>();
-        foreach(HighscoreEntry highscoreEntry in _highscoreEntryList)
+
+        //Refresh transforms.
+        for (int i = _entryContainer.childCount - 1; i > 1; i--)
+        {
+            if(_entryContainer.GetChild(i).transform != _entryTemplate)
+            {
+                Destroy(_entryContainer.GetChild(i).gameObject);
+            }
+        }
+
+        foreach (HighscoreEntry highscoreEntry in highscoreEntryList)
         {
             CreateHighscoreEntryTransform(highscoreEntry, _entryContainer, _highscoreEntryTransformList);
         }
@@ -60,14 +69,14 @@ public class HighscoreTable : MonoBehaviour
 
         entryTransform.Find("NameText").GetComponent<TMP_Text>().text = highscoreEntry.name;
 
-        entryTransform.Find("TimeText").GetComponent<TMP_Text>().text = highscoreEntry.time.ToString();
+        entryTransform.Find("TimeText").GetComponent<TMP_Text>().text = highscoreEntry.score.ToString();
 
         transformList.Add(entryTransform);
     }
 
-    class HighscoreEntry
+    public class HighscoreEntry
     {
         public string name;
-        public float time;
+        public int score;
     }
 }

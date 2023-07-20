@@ -9,6 +9,6 @@ public class EndGame : MonoBehaviour
 
         if (!player) return;
 
-        SceneManager.LoadScene("End");
+        SceneManager.LoadScene("Leaderboard");
     }
 }
