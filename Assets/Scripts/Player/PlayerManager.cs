@@ -10,11 +10,33 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public bool allowDamage = true;
 
+    [SerializeField] InventoryUI uiInventory;
+    public Inventory PlayerInventory { get; private set; }
     [SerializeField] PlayerInput playerInput;
 
     public int collectables = 0;
 
     [HideInInspector] public Transform respawnPoint;
+
+    private void Start()
+    {
+        PlayerInventory = new Inventory();
+        uiInventory.SetInventory(PlayerInventory);
+    }
+
+    private void OnEnable()
+    {
+        InputAction toggleInventory = playerInput.actions["Inventory"];
+
+        toggleInventory.started += ToggleInventory;
+    }
+
+    private void OnDisable()
+    {
+        InputAction toggleInventory = playerInput.actions["Inventory"];
+
+        toggleInventory.started -= ToggleInventory;
+    }
 
     void Update()
     {
@@ -26,6 +48,18 @@ public class PlayerManager : MonoBehaviour, IDamageable
         if(health > MaxHealth)
         {
             health = MaxHealth;
+        }
+    }
+
+    void ToggleInventory(InputAction.CallbackContext context)
+    {
+        if(!uiInventory.gameObject.activeSelf)
+        {
+            uiInventory.gameObject.SetActive(true);
+        }
+        else
+        {
+            uiInventory.gameObject.SetActive(false);
         }
     }
 
