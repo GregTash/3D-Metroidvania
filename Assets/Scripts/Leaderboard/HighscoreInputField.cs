@@ -22,12 +22,7 @@ public class HighscoreInputField : MonoBehaviour
 
     void AddHighscore()
     {
-        highscoreTable.highscoreEntryList.Add(new HighscoreTable.HighscoreEntry { name = _name, score = CollectableUI.collected});
+        HighscoreTable.highscoreEntryList.Add(new HighscoreTable.HighscoreEntry { name = _name, score = CollectableUI.collected});
         CollectableUI.collected = 0;
-    }
-
-    public void LoadGame()
-    {
-        SceneManager.LoadScene("MountainPath");
     }
 }

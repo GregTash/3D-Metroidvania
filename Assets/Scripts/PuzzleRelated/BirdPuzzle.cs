@@ -17,7 +17,7 @@ public class BirdPuzzle : MonoBehaviour
         OnDestroyedBird();
         if (birdsToDestroy.Length == 0)
         {
-            collectable.SetActive(true);
+            if(collectable != null) collectable.SetActive(true);
         }
     }
 
