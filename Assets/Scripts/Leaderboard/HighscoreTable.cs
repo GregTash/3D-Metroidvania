@@ -1,12 +1,13 @@
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class HighscoreTable : MonoBehaviour
 {
     Transform _entryContainer;
     Transform _entryTemplate;
-    public List<HighscoreEntry> highscoreEntryList = new List<HighscoreEntry>();
+    public static List<HighscoreEntry> highscoreEntryList = new List<HighscoreEntry>();
     List<Transform> _highscoreEntryTransformList;
 
     private void Awake()
@@ -19,11 +20,19 @@ public class HighscoreTable : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        for(int i = 0; i < highscoreEntryList.Count; i++)
+        //UpdateHighscores();
+    }
+
+    public void UpdateHighscores()
+    {
+        _highscoreEntryTransformList = new List<Transform>();
+
+        //Sort highscores.
+        for (int i = 0; i < highscoreEntryList.Count; i++)
         {
-            for(int j = i+1; j < highscoreEntryList.Count; j++)
+            for (int j = i + 1; j < highscoreEntryList.Count; j++)
             {
-                if(highscoreEntryList[j].score < highscoreEntryList[i].score)
+                if (highscoreEntryList[j].score > highscoreEntryList[i].score)
                 {
                     //Swap
                     HighscoreEntry tmp = highscoreEntryList[i];
@@ -33,14 +42,9 @@ public class HighscoreTable : MonoBehaviour
             }
         }
 
-        //UpdateHighscores();
-    }
-
-    public void UpdateHighscores()
-    {
-        _highscoreEntryTransformList = new List<Transform>();
-
         //Refresh transforms.
+        _highscoreEntryTransformList.Clear();
+
         for (int i = _entryContainer.childCount - 1; i > 1; i--)
         {
             if(_entryContainer.GetChild(i).transform != _entryTemplate)
@@ -69,9 +73,14 @@ public class HighscoreTable : MonoBehaviour
 
         entryTransform.Find("NameText").GetComponent<TMP_Text>().text = highscoreEntry.name;
 
-        entryTransform.Find("TimeText").GetComponent<TMP_Text>().text = highscoreEntry.score.ToString();
+        entryTransform.Find("ScoreText").GetComponent<TMP_Text>().text = highscoreEntry.score.ToString();
 
         transformList.Add(entryTransform);
+    }
+
+    public void LoadGame()
+    {
+        SceneManager.LoadScene("MountainPath");
     }
 
     public class HighscoreEntry
