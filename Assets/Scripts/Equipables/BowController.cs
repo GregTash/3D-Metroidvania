@@ -57,7 +57,25 @@ public class BowController : MonoBehaviour
             _audioSource.Play();
 
             Rigidbody arrow = Instantiate(projectile, arrowSpawner.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            arrow.velocity = Camera.main.transform.forward * shotPower;
+            arrow.transform.parent = null;
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity);
+
+            Vector3 hitPoint;
+            if(hit.transform != null)
+            {
+                hitPoint = hit.point;
+            }
+            else
+            {
+                hitPoint = ray.GetPoint(100);
+            }
+
+            Vector3 direction = hitPoint - arrowSpawner.transform.position;
+            arrow.transform.forward = direction.normalized;
+
+            arrow.AddForce(direction.normalized * shotPower, ForceMode.Impulse);
+
             arrowsLeft -= 1;
         }
     }
