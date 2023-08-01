@@ -2,13 +2,13 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
 
 public class HighscoreTable : MonoBehaviour
 {
     Transform _entryContainer;
     Transform _entryTemplate;
-    public static List<HighscoreEntry> highscoreEntryList = new List<HighscoreEntry>();
-    List<Transform> _highscoreEntryTransformList;
+    List<Transform> _leaderboardSingleTransformList;
 
     private void Awake()
     {
@@ -23,27 +23,27 @@ public class HighscoreTable : MonoBehaviour
         //UpdateHighscores();
     }
 
-    public void UpdateHighscores()
+    public void UpdateHighscores(Leaderboard leaderboard)
     {
-        _highscoreEntryTransformList = new List<Transform>();
+        _leaderboardSingleTransformList = new List<Transform>();
 
         //Sort highscores.
-        for (int i = 0; i < highscoreEntryList.Count; i++)
+        for (int i = 0; i < leaderboard.leaderboardSingleList.Count; i++)
         {
-            for (int j = i + 1; j < highscoreEntryList.Count; j++)
+            for (int j = i + 1; j < leaderboard.leaderboardSingleList.Count; j++)
             {
-                if (highscoreEntryList[j].score > highscoreEntryList[i].score)
+                if (leaderboard.leaderboardSingleList[j].score > leaderboard.leaderboardSingleList[i].score)
                 {
                     //Swap
-                    HighscoreEntry tmp = highscoreEntryList[i];
-                    highscoreEntryList[i] = highscoreEntryList[j];
-                    highscoreEntryList[j] = tmp;
+                    LeaderboardSingle tmp = leaderboard.leaderboardSingleList[i];
+                    leaderboard.leaderboardSingleList[i] = leaderboard.leaderboardSingleList[j];
+                    leaderboard.leaderboardSingleList[j] = tmp;
                 }
             }
         }
 
         //Refresh transforms.
-        _highscoreEntryTransformList.Clear();
+        _leaderboardSingleTransformList.Clear();
 
         for (int i = _entryContainer.childCount - 1; i > 1; i--)
         {
@@ -53,39 +53,33 @@ public class HighscoreTable : MonoBehaviour
             }
         }
 
-        foreach (HighscoreEntry highscoreEntry in highscoreEntryList)
+        foreach (LeaderboardSingle leaderboardSingle in leaderboard.leaderboardSingleList)
         {
-            CreateHighscoreEntryTransform(highscoreEntry, _entryContainer, _highscoreEntryTransformList);
+            CreateHighscoreEntryTransform(leaderboardSingle);
         }
     }
 
-    void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList)
+    void CreateHighscoreEntryTransform(LeaderboardSingle leaderboardSingle)
     {
         float templateHeight = 22f;
 
-        Transform entryTransform = Instantiate(_entryTemplate, container);
+        Transform entryTransform = Instantiate(_entryTemplate, _entryContainer);
         RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
-        entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);
+        entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * _leaderboardSingleTransformList.Count);
         entryTransform.gameObject.SetActive(true);
 
-        int rank = transformList.Count + 1;
+        int rank = _leaderboardSingleTransformList.Count + 1;
         entryTransform.Find("PosText").GetComponent<TMP_Text>().text = rank.ToString();
 
-        entryTransform.Find("NameText").GetComponent<TMP_Text>().text = highscoreEntry.name;
+        entryTransform.Find("NameText").GetComponent<TMP_Text>().text = leaderboardSingle.name;
 
-        entryTransform.Find("ScoreText").GetComponent<TMP_Text>().text = highscoreEntry.score.ToString();
+        entryTransform.Find("ScoreText").GetComponent<TMP_Text>().text = leaderboardSingle.score.ToString();
 
-        transformList.Add(entryTransform);
+        _leaderboardSingleTransformList.Add(entryTransform);
     }
 
     public void LoadGame()
     {
         SceneManager.LoadScene("MountainPath");
-    }
-
-    public class HighscoreEntry
-    {
-        public string name;
-        public int score;
     }
 }

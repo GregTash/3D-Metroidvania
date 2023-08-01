@@ -1,9 +1,10 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement;
+using Newtonsoft.Json;
 
 public class HighscoreInputField : MonoBehaviour
 {
+    Leaderboard leaderboard;
     [SerializeField] HighscoreTable highscoreTable;
     [SerializeField] TMP_InputField inputField;
     string _name;
@@ -16,13 +17,27 @@ public class HighscoreInputField : MonoBehaviour
     public void OnButtonPress()
     {
         AddHighscore();
-        highscoreTable.UpdateHighscores();
         Destroy(gameObject);
     }
 
     void AddHighscore()
     {
-        HighscoreTable.highscoreEntryList.Add(new HighscoreTable.HighscoreEntry { name = _name, score = CollectableUI.collected});
+        WebRequests.Get
+        ("https://nukileaderboard-gregtash.azurewebsites.net/api/GetLeaderboard?code=IrckXTSEqtKH-6O44fwvEIhAIxxGvH8Dr4oZUU0s8qAuAzFuREr-xA==",
+            (string error) =>
+            {
+                Debug.Log("Error: " + error);
+            },
+            (string response) =>
+            {
+                Debug.Log("Response: " + response);
+
+                Leaderboard leaderboard = JsonConvert.DeserializeObject<Leaderboard>(response);
+                //leaderboard.leaderboardSingleList.Add(new LeaderboardSingle { name = _name, score = CollectableUI.collected });
+                highscoreTable.UpdateHighscores(leaderboard);
+            }
+        );
+
         CollectableUI.collected = 0;
     }
 }
