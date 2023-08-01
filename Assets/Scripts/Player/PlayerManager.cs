@@ -16,11 +16,16 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     [HideInInspector] public Transform respawnPoint;
 
+    void Start()
+    {
+        SetInitialSpawnpoint();
+    }
+
     void Update()
     {
         if(health <= 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Respawn();
         }
 
         if(health > MaxHealth)
@@ -32,5 +37,21 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public void TakeDamage(int damageAmount)
     {
         if(allowDamage) health -= damageAmount;
+    }
+
+    void SetInitialSpawnpoint()
+    {
+        GameObject startPos = new GameObject();
+
+        startPos.name = "StartPos";
+        startPos.transform.position = transform.position;
+
+        respawnPoint = startPos.transform;
+    }
+
+    void Respawn()
+    {
+        transform.position = respawnPoint.position;
+        health = MaxHealth;
     }
 }
