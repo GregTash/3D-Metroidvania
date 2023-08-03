@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public int collectables = 0;
 
+    public int gemsCollected = 0;
+
     [HideInInspector] public Transform respawnPoint;
 
     void Start()
