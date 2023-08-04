@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -10,9 +10,24 @@ Material:
   m_Name: StylizedWater2_Desktop
   m_Shader: {fileID: -6465566751694194690, guid: d7b0192b9bf19c949900035fa781fdc4,
     type: 3}
-  m_ShaderKeywords: ADVANCED_LIGHTING _ADVANCED_SHADING _CAUSTICS _DEPTHEXP_ON _DEPTH_TEX
-    _DISTANCE_NORMALS _FOAM _NORMALMAP _REFRACTION _SHARP_INERSECTION _SIMPLE_LIGHTING
-    _TRANSLUCENCY _VERTEXCOLORWAVEFLATTENING_ON _WAVES _WORLDSPACEUV_ON
+  m_ValidKeywords:
+  - _ADVANCED_SHADING
+  - _CAUSTICS
+  - _DISTANCE_NORMALS
+  - _FOAM
+  - _NORMALMAP
+  - _REFRACTION
+  - _SHARP_INERSECTION
+  - _TRANSLUCENCY
+  - _WAVES
+  m_InvalidKeywords:
+  - ADVANCED_LIGHTING
+  - _DEPTHEXP_ON
+  - _DEPTH_TEX
+  - _SIMPLE_LIGHTING
+  - _VERTEXCOLORWAVEFLATTENING_ON
+  - _WORLDSPACEUV_ON
+  - _ZCLIP_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -94,6 +109,7 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
     - Vector1_1942CF3A: 1
     - Vector1_BE75C478: 32
@@ -111,17 +127,17 @@ Material:
     - _CausticsBrightness: 2
     - _CausticsDistortion: 0.047
     - _CausticsOn: 1
-    - _CausticsSpeed: 0.1
+    - _CausticsSpeed: 0.001
     - _CausticsTiling: 0.1
     - _CrossPan_IntersectionOn: 0
     - _Cull: 0
     - _Cutoff: 0.5
     - _Depth: 0.94
     - _DepthExp: 1
-    - _DepthHorizontal: 1
+    - _DepthHorizontal: 8
     - _DepthMode: 0
     - _DepthTexture: 1
-    - _DepthVertical: 8
+    - _DepthVertical: 16
     - _DisableDepthTexture: 0
     - _DistanceNormalsOn: 1
     - _DistanceNormalsTiling: 0.25
@@ -134,7 +150,7 @@ Material:
     - _FoamOn: 1
     - _FoamOpacity: 0
     - _FoamSize: 0.606
-    - _FoamSpeed: 0.06000001
+    - _FoamSpeed: 0.001
     - _FoamTiling: 0.09999993
     - _FoamWaveMask: 0
     - _FoamWaveMaskExp: 1
@@ -149,7 +165,7 @@ Material:
     - _IntersectionRippleStrength: 0.125
     - _IntersectionSize: 0.944
     - _IntersectionSource: 0
-    - _IntersectionSpeed: 0.06999999
+    - _IntersectionSpeed: 0.001
     - _IntersectionStyle: 1
     - _IntersectionTiling: 0.13999975
     - _IntersectionWaveDist: 33.28
@@ -160,7 +176,7 @@ Material:
     - _NORMALMAPOn: 1
     - _NormalMap: 1
     - _NormalMapOn: 1
-    - _NormalSpeed: 0.2
+    - _NormalSpeed: 0.001
     - _NormalStrength: 0.202
     - _NormalTiling: -0.48000008
     - _OcclusionStrength: 1
@@ -224,9 +240,9 @@ Material:
     - _VertexColorWaveFlattening: 1
     - _WaveCount: 2
     - _WaveDistance: 0.775
-    - _WaveHeight: 0.1
+    - _WaveHeight: 0.3
     - _WaveNormalStr: 0.1
-    - _WaveSpeed: 2.3999996
+    - _WaveSpeed: 1
     - _WaveSteepness: 0
     - _WaveTint: 0
     - _WavesOn: 1
@@ -235,7 +251,7 @@ Material:
     - _ZClip: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0, g: 0.16451614, b: 0.34, a: 0.9647059}
+    - _BaseColor: {r: 0.35493988, g: 0, b: 0.9649928, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _DepthMapBounds: {r: -402.3, g: -459.43, b: 0.0012693577, a: 0}
     - _Direction: {r: 1, g: 1, b: 0, a: 0}
@@ -243,9 +259,9 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 0.22745098}
     - _HorizonColor: {r: 0.68, g: 1, b: 0.99, a: 0.15}
-    - _IntersectionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _IntersectionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _ShallowColor: {r: 0, g: 1, b: 0.98136926, a: 0.3764706}
+    - _ShallowColor: {r: 0.93333334, g: 0, b: 2, a: 0.3764706}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _WaterColor: {r: 0.21176466, g: 0.6745098, b: 1, a: 1}
     - _WaterShallowColor: {r: 0, g: 0.9394503, b: 1, a: 1}
