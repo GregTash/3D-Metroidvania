@@ -46,10 +46,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""HorizontalLook"",
-                    ""type"": ""Button"",
-                    ""id"": ""ba179179-0175-4727-8650-7dd3cb9f414b"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""LookAction"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""1e90ca38-266a-492a-9655-33d75e4102d8"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -112,15 +112,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""name"": ""Stomp"",
                     ""type"": ""Button"",
                     ""id"": ""5d1aeb09-eb6a-4dc3-984c-c3f7523605e3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""VerticalLook"",
-                    ""type"": ""Button"",
-                    ""id"": ""0d0060c3-176f-4fc7-89af-234ce8bf1263"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -426,136 +417,26 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""4ed0d87e-5759-435d-8bf5-58aadf11e317"",
-                    ""path"": ""1DAxis"",
+                    ""name"": """",
+                    ""id"": ""424dddba-cfbd-4f66-94e2-52f0968dbbe5"",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HorizontalLook"",
-                    ""isComposite"": true,
+                    ""action"": ""LookAction"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
-                    ""id"": ""c6a2ea13-c635-40f6-9ec3-8cf765252c9e"",
-                    ""path"": ""<Mouse>/delta/left"",
+                    ""name"": """",
+                    ""id"": ""45eff8d4-52ae-4a0b-abf1-a1eb83ceb90c"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HorizontalLook"",
+                    ""action"": ""LookAction"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""f9674d59-5b0a-47ab-8162-6ccfcafc8a1e"",
-                    ""path"": ""<Mouse>/delta/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HorizontalLook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Controller"",
-                    ""id"": ""f8b27d43-bb11-4819-b4d5-ea1c058305ca"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HorizontalLook"",
-                    ""isComposite"": true,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""d89d980c-30d6-4fc4-879c-b465310d0171"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HorizontalLook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""0ab21956-fd76-41d1-a30a-2c5a9b99d754"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""HorizontalLook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""95319f0e-3438-4dcf-bd67-41c57afabb78"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""VerticalLook"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""8eca8302-e59d-4a4e-b2a7-ee6b7622419d"",
-                    ""path"": ""<Mouse>/delta/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""VerticalLook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""fafde034-1c5b-402a-9f13-0105bfd9b41d"",
-                    ""path"": ""<Mouse>/delta/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""VerticalLook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Controller"",
-                    ""id"": ""01327120-0dd9-4a18-badd-cc15da3c419d"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""VerticalLook"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""6417371c-563e-46a2-9eca-9a4ff119c381"",
-                    ""path"": ""<Gamepad>/rightStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""VerticalLook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""533de06c-cc7c-4603-b046-5852df884549"",
-                    ""path"": ""<Gamepad>/rightStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""VerticalLook"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -566,7 +447,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Default = asset.FindActionMap("Default", throwIfNotFound: true);
         m_Default_Horizontal = m_Default.FindAction("Horizontal", throwIfNotFound: true);
         m_Default_Vertical = m_Default.FindAction("Vertical", throwIfNotFound: true);
-        m_Default_HorizontalLook = m_Default.FindAction("HorizontalLook", throwIfNotFound: true);
+        m_Default_LookAction = m_Default.FindAction("LookAction", throwIfNotFound: true);
         m_Default_Jump = m_Default.FindAction("Jump", throwIfNotFound: true);
         m_Default_Aim = m_Default.FindAction("Aim", throwIfNotFound: true);
         m_Default_Attack = m_Default.FindAction("Attack", throwIfNotFound: true);
@@ -574,7 +455,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Default_Interact = m_Default.FindAction("Interact", throwIfNotFound: true);
         m_Default_Sprint = m_Default.FindAction("Sprint", throwIfNotFound: true);
         m_Default_Stomp = m_Default.FindAction("Stomp", throwIfNotFound: true);
-        m_Default_VerticalLook = m_Default.FindAction("VerticalLook", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -638,7 +518,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private List<IDefaultActions> m_DefaultActionsCallbackInterfaces = new List<IDefaultActions>();
     private readonly InputAction m_Default_Horizontal;
     private readonly InputAction m_Default_Vertical;
-    private readonly InputAction m_Default_HorizontalLook;
+    private readonly InputAction m_Default_LookAction;
     private readonly InputAction m_Default_Jump;
     private readonly InputAction m_Default_Aim;
     private readonly InputAction m_Default_Attack;
@@ -646,14 +526,13 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Default_Interact;
     private readonly InputAction m_Default_Sprint;
     private readonly InputAction m_Default_Stomp;
-    private readonly InputAction m_Default_VerticalLook;
     public struct DefaultActions
     {
         private @PlayerControls m_Wrapper;
         public DefaultActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Horizontal => m_Wrapper.m_Default_Horizontal;
         public InputAction @Vertical => m_Wrapper.m_Default_Vertical;
-        public InputAction @HorizontalLook => m_Wrapper.m_Default_HorizontalLook;
+        public InputAction @LookAction => m_Wrapper.m_Default_LookAction;
         public InputAction @Jump => m_Wrapper.m_Default_Jump;
         public InputAction @Aim => m_Wrapper.m_Default_Aim;
         public InputAction @Attack => m_Wrapper.m_Default_Attack;
@@ -661,7 +540,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Default_Interact;
         public InputAction @Sprint => m_Wrapper.m_Default_Sprint;
         public InputAction @Stomp => m_Wrapper.m_Default_Stomp;
-        public InputAction @VerticalLook => m_Wrapper.m_Default_VerticalLook;
         public InputActionMap Get() { return m_Wrapper.m_Default; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -677,9 +555,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Vertical.started += instance.OnVertical;
             @Vertical.performed += instance.OnVertical;
             @Vertical.canceled += instance.OnVertical;
-            @HorizontalLook.started += instance.OnHorizontalLook;
-            @HorizontalLook.performed += instance.OnHorizontalLook;
-            @HorizontalLook.canceled += instance.OnHorizontalLook;
+            @LookAction.started += instance.OnLookAction;
+            @LookAction.performed += instance.OnLookAction;
+            @LookAction.canceled += instance.OnLookAction;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -701,9 +579,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Stomp.started += instance.OnStomp;
             @Stomp.performed += instance.OnStomp;
             @Stomp.canceled += instance.OnStomp;
-            @VerticalLook.started += instance.OnVerticalLook;
-            @VerticalLook.performed += instance.OnVerticalLook;
-            @VerticalLook.canceled += instance.OnVerticalLook;
         }
 
         private void UnregisterCallbacks(IDefaultActions instance)
@@ -714,9 +589,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Vertical.started -= instance.OnVertical;
             @Vertical.performed -= instance.OnVertical;
             @Vertical.canceled -= instance.OnVertical;
-            @HorizontalLook.started -= instance.OnHorizontalLook;
-            @HorizontalLook.performed -= instance.OnHorizontalLook;
-            @HorizontalLook.canceled -= instance.OnHorizontalLook;
+            @LookAction.started -= instance.OnLookAction;
+            @LookAction.performed -= instance.OnLookAction;
+            @LookAction.canceled -= instance.OnLookAction;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -738,9 +613,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Stomp.started -= instance.OnStomp;
             @Stomp.performed -= instance.OnStomp;
             @Stomp.canceled -= instance.OnStomp;
-            @VerticalLook.started -= instance.OnVerticalLook;
-            @VerticalLook.performed -= instance.OnVerticalLook;
-            @VerticalLook.canceled -= instance.OnVerticalLook;
         }
 
         public void RemoveCallbacks(IDefaultActions instance)
@@ -762,7 +634,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     {
         void OnHorizontal(InputAction.CallbackContext context);
         void OnVertical(InputAction.CallbackContext context);
-        void OnHorizontalLook(InputAction.CallbackContext context);
+        void OnLookAction(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
@@ -770,6 +642,5 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnStomp(InputAction.CallbackContext context);
-        void OnVerticalLook(InputAction.CallbackContext context);
     }
 }

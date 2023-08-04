@@ -24,10 +24,10 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "HorizontalLook",
-                    "type": "Button",
-                    "id": "ba179179-0175-4727-8650-7dd3cb9f414b",
-                    "expectedControlType": "Button",
+                    "name": "LookAction",
+                    "type": "PassThrough",
+                    "id": "1e90ca38-266a-492a-9655-33d75e4102d8",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -90,15 +90,6 @@
                     "name": "Stomp",
                     "type": "Button",
                     "id": "5d1aeb09-eb6a-4dc3-984c-c3f7523605e3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "VerticalLook",
-                    "type": "Button",
-                    "id": "0d0060c3-176f-4fc7-89af-234ce8bf1263",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -404,136 +395,26 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "4ed0d87e-5759-435d-8bf5-58aadf11e317",
-                    "path": "1DAxis",
+                    "name": "",
+                    "id": "424dddba-cfbd-4f66-94e2-52f0968dbbe5",
+                    "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HorizontalLook",
-                    "isComposite": true,
+                    "action": "LookAction",
+                    "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "c6a2ea13-c635-40f6-9ec3-8cf765252c9e",
-                    "path": "<Mouse>/delta/left",
+                    "name": "",
+                    "id": "45eff8d4-52ae-4a0b-abf1-a1eb83ceb90c",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "HorizontalLook",
+                    "action": "LookAction",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "f9674d59-5b0a-47ab-8162-6ccfcafc8a1e",
-                    "path": "<Mouse>/delta/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HorizontalLook",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Controller",
-                    "id": "f8b27d43-bb11-4819-b4d5-ea1c058305ca",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HorizontalLook",
-                    "isComposite": true,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "d89d980c-30d6-4fc4-879c-b465310d0171",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HorizontalLook",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "0ab21956-fd76-41d1-a30a-2c5a9b99d754",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "HorizontalLook",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "95319f0e-3438-4dcf-bd67-41c57afabb78",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "VerticalLook",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "8eca8302-e59d-4a4e-b2a7-ee6b7622419d",
-                    "path": "<Mouse>/delta/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "VerticalLook",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "fafde034-1c5b-402a-9f13-0105bfd9b41d",
-                    "path": "<Mouse>/delta/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "VerticalLook",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Controller",
-                    "id": "01327120-0dd9-4a18-badd-cc15da3c419d",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "VerticalLook",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "6417371c-563e-46a2-9eca-9a4ff119c381",
-                    "path": "<Gamepad>/rightStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "VerticalLook",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "533de06c-cc7c-4603-b046-5852df884549",
-                    "path": "<Gamepad>/rightStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "VerticalLook",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 }
             ]
         }
