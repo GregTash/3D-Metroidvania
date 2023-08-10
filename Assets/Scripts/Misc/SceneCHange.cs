@@ -5,8 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
-    public void StartGame()
+    [SerializeField] string scene;
+
+    private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("MountainPath");
+        SceneManager.LoadScene(scene);
     }
 }

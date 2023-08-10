@@ -18,7 +18,6 @@ Material:
   - _RECEIVE_SHADOWS_OFF
   - _SHARP_INERSECTION
   - _SPECULARHIGHLIGHTS_OFF
-  - _UNLIT
   m_InvalidKeywords:
   - ADVANCED_LIGHTING
   - _DEPTHEXP_ON
@@ -166,7 +165,7 @@ Material:
     - _IntersectionStyle: 1
     - _IntersectionTiling: 0.11000057
     - _IntersectionWaveDist: 41.4
-    - _LightingOn: 0
+    - _LightingOn: 1
     - _Metallic: 0
     - _Metallicness: 0.1
     - _NORMALMAPOn: 1
@@ -193,7 +192,7 @@ Material:
     - _Reflectivity: 1
     - _RefractionAmount: 0.05
     - _RefractionOn: 0
-    - _RefractionStrength: 0.037
+    - _RefractionStrength: 0
     - _RimRize: 1
     - _RimTiling: 0.025
     - _RiverModeOn: 0
@@ -209,8 +208,8 @@ Material:
     - _SlopeThreshold: 0.25
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _SparkleIntensity: 3
-    - _SparkleSize: 0.816
+    - _SparkleIntensity: 10
+    - _SparkleSize: 0.587
     - _SpecularHighlights: 1
     - _SpecularReflectionsOn: 0
     - _Speed: 1

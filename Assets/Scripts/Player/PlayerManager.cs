@@ -16,6 +16,10 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public int gemsCollected = 0;
 
+    bool mountainArea = false;
+
+    bool poisonLake = false;
+
     [HideInInspector] public Transform respawnPoint;
 
     void Start()
