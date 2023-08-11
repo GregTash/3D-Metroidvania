@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChange : MonoBehaviour
+public class SceneChanger : MonoBehaviour
 {
     [SerializeField] string scene;
 
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(scene);
+        other.TryGetComponent(out PlayerManager playerManager);
+
+        if (playerManager)
+            SceneManager.LoadScene(scene);
     }
 }

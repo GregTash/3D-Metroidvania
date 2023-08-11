@@ -244,7 +244,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1057175136072308316}
   - component: {fileID: 1057175136072308317}
-  - component: {fileID: 6725415648653607627}
+  - component: {fileID: 2100220068127978697}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -280,7 +280,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 13.130753, y: 10.153107, z: 6.263794}
   m_Center: {x: 0.20618439, y: 1.5513763, z: -0.038146973}
---- !u!114 &6725415648653607627
+--- !u!114 &2100220068127978697
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,7 +289,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1057175136072308319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e837fcd1a8ec38c4cb09ccd5ed73e9f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 21c9a9cc91d25cf4d9cff8394d67a956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   scene: GlowCave
