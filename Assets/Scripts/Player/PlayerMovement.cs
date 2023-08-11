@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -104,7 +105,7 @@ public class PlayerMovement : MonoBehaviour
         //Calculate the movement direction and then move forward.
         _moveDir = orientation.forward * _verticalInput + orientation.right * _horizontalInput;
 
-        if (Grounded) _rb.AddForce(_moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
+        if(Grounded) _rb.AddForce(_moveDir.normalized * moveSpeed * 10f, ForceMode.Force);
         if(!Grounded) _rb.AddForce(_moveDir.normalized * originalMoveSpeed * 10f, ForceMode.Force);
     }
 
@@ -129,15 +130,19 @@ public class PlayerMovement : MonoBehaviour
 
     void GroundCheck()
     {
-        Grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, ~ignoreLayers);
+        Grounded = Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.2f, ~ignoreLayers);
 
         if (Grounded)
         {
+            transform.parent = hit.transform;
+
             if (!_sprinting) moveSpeed = originalMoveSpeed;
             _rb.drag = groundDrag;
         }
         else
         {
+            transform.parent = null;
+
             _rb.drag = 0;
         }
     }
@@ -195,11 +200,13 @@ public class PlayerMovement : MonoBehaviour
     {
         TouchingSomething = true;
 
-        if (Grounded && !_stuckToGround)
+        if (Grounded)
         {
-            _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
-
-            _stuckToGround = true;
+            if(!_stuckToGround)
+            {
+                _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+                _stuckToGround = true;
+            }
         }
     }
 
@@ -207,6 +214,6 @@ public class PlayerMovement : MonoBehaviour
     {
         TouchingSomething = false;
 
-        if(!Grounded) _stuckToGround = false;
+        if (!Grounded) _stuckToGround = false;
     }
 }
