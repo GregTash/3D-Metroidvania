@@ -12,6 +12,19 @@ public class HighscoreInputField : MonoBehaviour
     private void Update()
     {
         _name = inputField.text;
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+          //  WebRequests.PostJson("https://nukileaderboard-gregtash.azurewebsites.net/api/AddScore?code=wAuf48-iO69XV3I0vy4IMBRMjNsnYy-8d1IWmsa_IStOAzFuUaTXqA==", "{}",
+          //    (string error) =>
+          //    {
+          //        Debug.Log("Error: " + error);
+          //    },
+          //    (string response) =>
+          //    {
+          //        Debug.Log("Response: " + response);
+          //    }
+          //);
+        }
     }
 
     public void OnButtonPress()
@@ -38,6 +51,20 @@ public class HighscoreInputField : MonoBehaviour
             }
         );
 
+        WebRequests.PostJson("https://nukileaderboard-gregtash.azurewebsites.net/api/AddScore?code=wAuf48-iO69XV3I0vy4IMBRMjNsnYy-8d1IWmsa_IStOAzFuUaTXqA==", 
+            "{}",
+            (string error) =>
+            {
+                Debug.Log("Error: " + error);
+             },
+            (string response) =>
+            {
+                Debug.Log("Response: " + response);
+            }
+            );
+
         CollectableUI.collected = 0;
+
+
     }
 }
