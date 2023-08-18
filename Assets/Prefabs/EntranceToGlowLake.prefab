@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1057175134446748497
 Transform:
@@ -53,7 +53,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -114,7 +114,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1057175135367082349
 Transform:
@@ -150,7 +150,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -310,7 +310,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4627692277848056059
 Transform:
@@ -346,7 +346,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -450,7 +450,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4987764584338901010
 Transform:
@@ -486,7 +486,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -547,7 +547,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3562150960065141776
 Transform:
@@ -583,7 +583,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -644,7 +644,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3994169091873265838
 Transform:
@@ -680,7 +680,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -741,7 +741,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7030826819516176212
 Transform:
@@ -777,7 +777,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
+  m_StaticShadowCaster: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -828,10 +828,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -918,10 +928,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -1008,10 +1028,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -1098,10 +1128,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -1188,10 +1228,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -1278,10 +1328,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -1368,10 +1428,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -1458,10 +1528,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -1548,10 +1628,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -1638,10 +1728,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -1728,10 +1828,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
@@ -1818,10 +1928,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6708656285781831923}
     m_Modifications:
+    - target: {fileID: 3698319226506907344, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
       propertyPath: m_Name
       value: EntranceFog (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698319226506907345, guid: 275e918b65a5d3c44830c6721589f223,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 3698319226506907346, guid: 275e918b65a5d3c44830c6721589f223,
         type: 3}
