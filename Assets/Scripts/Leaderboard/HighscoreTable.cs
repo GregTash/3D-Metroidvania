@@ -8,7 +8,7 @@ public class HighscoreTable : MonoBehaviour
 {
     Transform _entryContainer;
     Transform _entryTemplate;
-    List<Transform> _leaderboardSingleTransformList;
+    [SerializeField] List<Transform> _leaderboardSingleTransformList;
 
     private void Awake()
     {

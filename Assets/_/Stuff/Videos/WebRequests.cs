@@ -159,6 +159,6 @@ public static class WebRequests {
     {
         yield return GetCoroutinePostJson(urlPush, jsonData, onPushError, onPushSuccess);
         yield return GetCoroutine(urlPull, onPullError, onPullSuccess);
-        onPushAndReceiveEvent?.Invoke();
+        //onPushAndReceiveEvent?.Invoke();
     }
 }
