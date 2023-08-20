@@ -9,6 +9,7 @@ public class HighscoreInputField : MonoBehaviour
     [SerializeField] HighscoreTable highscoreTable;
     [SerializeField] TMP_InputField inputField;
     string _name;
+    [SerializeField] int collectablesCollected;
 
     private void Update()
     {
@@ -54,8 +55,8 @@ public class HighscoreInputField : MonoBehaviour
 
         LeaderboardSingle leaderboardSingle = new LeaderboardSingle
         {
-            name = "ff",
-            score = 89,
+            name = inputField.text,
+            score = collectablesCollected,
         };
 
         WebRequests.PushAndReceive("https://nukileaderboard-tomgraham.azurewebsites.net/api/AddScore?code=3Aq0aZZTIypBDw7MT_W4lA4Gg-nhv9UYVG57FBTuGrNNAzFuPkIJmQ==", "https://nukileaderboard-tomgraham.azurewebsites.net/api/GetLeaderboard?code=tBNMgEfU8VWjvT0RB2cUvKrxHsgMzjJgx1jmbfdfj60mAzFuSxIfeg==",
