@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Newtonsoft.Json;
+using System.Collections;
 
 public class HighscoreInputField : MonoBehaviour
 {
@@ -12,19 +13,6 @@ public class HighscoreInputField : MonoBehaviour
     private void Update()
     {
         _name = inputField.text;
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-          //  WebRequests.PostJson("https://nukileaderboard-gregtash.azurewebsites.net/api/AddScore?code=wAuf48-iO69XV3I0vy4IMBRMjNsnYy-8d1IWmsa_IStOAzFuUaTXqA==", "{}",
-          //    (string error) =>
-          //    {
-          //        Debug.Log("Error: " + error);
-          //    },
-          //    (string response) =>
-          //    {
-          //        Debug.Log("Response: " + response);
-          //    }
-          //);
-        }
     }
 
     public void OnButtonPress()
@@ -33,10 +21,53 @@ public class HighscoreInputField : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void AddHighscore()
+    public delegate void OnLeaderboardSubmission();
+    public static event OnLeaderboardSubmission onLeaderboardSubmissionEvent;
+
+    private void OnEnable()
+    {
+        onLeaderboardSubmissionEvent += GetUpdatedScores;
+    }
+
+    void GetUpdatedScores()
     {
         WebRequests.Get
-        ("https://nukileaderboard-gregtash.azurewebsites.net/api/GetLeaderboard?code=IrckXTSEqtKH-6O44fwvEIhAIxxGvH8Dr4oZUU0s8qAuAzFuREr-xA==",
+        ("https://nukileaderboard-tomgraham.azurewebsites.net/api/GetLeaderboard?code=tBNMgEfU8VWjvT0RB2cUvKrxHsgMzjJgx1jmbfdfj60mAzFuSxIfeg==",
+        (string error) =>
+        {
+            Debug.Log("Error: " + error);
+        },
+        (string response) =>
+        {
+            Debug.Log("Response: " + response);
+
+            Leaderboard leaderboard = JsonConvert.DeserializeObject<Leaderboard>(response);
+            //leaderboard.leaderboardSingleList.Add(new LeaderboardSingle { name = _name, score = CollectableUI.collected });
+            highscoreTable.UpdateHighscores(leaderboard);
+        }
+    );
+    }
+
+    void AddHighscore()
+    {
+        //onLeaderboardSubmissionEvent?.Invoke();
+
+        LeaderboardSingle leaderboardSingle = new LeaderboardSingle
+        {
+            name = "ff",
+            score = 89,
+        };
+
+        WebRequests.PushAndReceive("https://nukileaderboard-tomgraham.azurewebsites.net/api/AddScore?code=3Aq0aZZTIypBDw7MT_W4lA4Gg-nhv9UYVG57FBTuGrNNAzFuPkIJmQ==", "https://nukileaderboard-tomgraham.azurewebsites.net/api/GetLeaderboard?code=tBNMgEfU8VWjvT0RB2cUvKrxHsgMzjJgx1jmbfdfj60mAzFuSxIfeg==",
+            JsonConvert.SerializeObject(leaderboardSingle),
+            (string error) =>
+            {
+                Debug.Log("Error: " + error);
+            },
+            (string response) =>
+            {
+                Debug.Log("Response: " + response);
+            },
             (string error) =>
             {
                 Debug.Log("Error: " + error);
@@ -49,19 +80,23 @@ public class HighscoreInputField : MonoBehaviour
                 //leaderboard.leaderboardSingleList.Add(new LeaderboardSingle { name = _name, score = CollectableUI.collected });
                 highscoreTable.UpdateHighscores(leaderboard);
             }
-        );
-
-        WebRequests.PostJson("https://nukileaderboard-gregtash.azurewebsites.net/api/AddScore?code=wAuf48-iO69XV3I0vy4IMBRMjNsnYy-8d1IWmsa_IStOAzFuUaTXqA==", 
-            "{}",
-            (string error) =>
-            {
-                Debug.Log("Error: " + error);
-             },
-            (string response) =>
-            {
-                Debug.Log("Response: " + response);
-            }
             );
+
+        highscoreTable.UpdateHighscores(leaderboard);
+
+        //WebRequests.PostJson("https://nukileaderboard-tomgraham.azurewebsites.net/api/AddScore?code=3Aq0aZZTIypBDw7MT_W4lA4Gg-nhv9UYVG57FBTuGrNNAzFuPkIJmQ==", 
+        //    JsonConvert.SerializeObject(leaderboardSingle),
+        //    (string error) =>
+        //    {
+        //        Debug.Log("Error: " + error);
+        //     },
+        //    (string response) =>
+        //    {
+        //        Debug.Log("Response: " + response);
+        //    }
+        //    );
+
+
 
         CollectableUI.collected = 0;
 

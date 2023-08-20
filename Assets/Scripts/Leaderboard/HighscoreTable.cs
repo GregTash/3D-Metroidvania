@@ -23,6 +23,16 @@ public class HighscoreTable : MonoBehaviour
         //UpdateHighscores();
     }
 
+    private void OnEnable()
+    {
+        //WebRequests.onPushAndReceiveEvent += UpdateHighscores();
+    }
+
+    private void OnDisable()
+    {
+        
+    }
+
     public void UpdateHighscores(Leaderboard leaderboard)
     {
         _leaderboardSingleTransformList = new List<Transform>();

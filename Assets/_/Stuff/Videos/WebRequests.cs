@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -20,7 +21,8 @@ public static class WebRequests {
 
     public static void Get(string url, Action<string> onError, Action<string> onSuccess) {
         Init();
-        webRequestsMonoBehaviour.StartCoroutine(GetCoroutine(url, onError, onSuccess));
+        //GetCoroutine(url, onError, onSuccess)
+        //webRequestsMonoBehaviour.StartCoroutine(GetCoroutinePostJson(url, jsonData, onError, onSuccess));
     }
 
     private static IEnumerator GetCoroutine(string url, Action<string> onError, Action<string> onSuccess) {
@@ -144,4 +146,19 @@ public static class WebRequests {
         }
     }
 
+    public static void PushAndReceive(string urlPush, string urlPull, string jsonData, Action<string> onPushError, Action<string> onPushSuccess, Action<string> onPullError, Action<string> onPullSuccess)
+    {
+        Init();
+        webRequestsMonoBehaviour.StartCoroutine(PushAndReceiveCR(urlPush, urlPull, jsonData, onPushError, onPushSuccess, onPullError, onPullSuccess));
+    }
+
+    public delegate void OnPushAndReceive();
+    public static event OnPushAndReceive onPushAndReceiveEvent;
+
+    private static IEnumerator PushAndReceiveCR(string urlPush, string urlPull, string jsonData, Action<string> onPushError, Action<string> onPushSuccess, Action<string> onPullError, Action<string> onPullSuccess)
+    {
+        yield return GetCoroutinePostJson(urlPush, jsonData, onPushError, onPushSuccess);
+        yield return GetCoroutine(urlPull, onPullError, onPullSuccess);
+        onPushAndReceiveEvent?.Invoke();
+    }
 }
