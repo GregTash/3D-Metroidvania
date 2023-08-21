@@ -40,6 +40,8 @@ public class HighscoreTable : MonoBehaviour
         //Sort highscores.
         for (int i = 0; i < leaderboard.leaderboardSingleList.Count; i++)
         {
+            if (leaderboard == null) break;
+
             for (int j = i + 1; j < leaderboard.leaderboardSingleList.Count; j++)
             {
                 if (leaderboard.leaderboardSingleList[j].score > leaderboard.leaderboardSingleList[i].score)
