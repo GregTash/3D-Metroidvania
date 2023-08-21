@@ -83,8 +83,6 @@ public class HighscoreInputField : MonoBehaviour
             }
             );
 
-        highscoreTable.UpdateHighscores(leaderboard);
-
         //WebRequests.PostJson("https://nukileaderboard-tomgraham.azurewebsites.net/api/AddScore?code=3Aq0aZZTIypBDw7MT_W4lA4Gg-nhv9UYVG57FBTuGrNNAzFuPkIJmQ==", 
         //    JsonConvert.SerializeObject(leaderboardSingle),
         //    (string error) =>
