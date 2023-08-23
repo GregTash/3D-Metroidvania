@@ -13,6 +13,8 @@ public class Collectable : MonoBehaviour
         {
             _playerManager.collectables += collectableAmount;
 
+            PlayerPrefs.SetInt(transform.name, 1);
+
             Destroy(gameObject);
         }
     }

@@ -9,7 +9,11 @@ public class BirdPuzzle : MonoBehaviour
 
     private void Start()
     {
-        
+        if (PlayerPrefs.GetInt(collectable.name) > 0)
+        {
+            Destroy(collectable);
+            Destroy(gameObject);
+        }
     }
 
     private void Update()

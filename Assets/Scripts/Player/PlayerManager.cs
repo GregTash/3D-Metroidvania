@@ -1,4 +1,6 @@
+using System.ComponentModel;
 using TMPro;
+using Unity.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -21,10 +23,16 @@ public class PlayerManager : MonoBehaviour, IDamageable
     void Start()
     {
         SetInitialSpawnpoint();
+
+        collectables = PlayerPrefs.GetInt("Collectables");
+
+        gemsCollected = PlayerPrefs.GetInt("GemsCollected");
     }
 
     void Update()
     {
+        UpdatePlayerPrefs();
+
         if(health <= 0)
         {
             Respawn();
@@ -55,5 +63,18 @@ public class PlayerManager : MonoBehaviour, IDamageable
     {
         transform.position = respawnPoint.position;
         health = MaxHealth;
+    }
+
+    void UpdatePlayerPrefs()
+    {
+        if (PlayerPrefs.GetInt("Collectables") != collectables)
+        {
+            PlayerPrefs.SetInt("Collectables", collectables);
+        }
+
+        if (PlayerPrefs.GetInt("GemsCollected") != gemsCollected)
+        {
+            PlayerPrefs.SetInt("GemsCollected", gemsCollected);
+        }
     }
 }
