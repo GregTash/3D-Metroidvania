@@ -27,6 +27,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
         collectables = PlayerPrefs.GetInt("Collectables");
 
         gemsCollected = PlayerPrefs.GetInt("GemsCollected");
+
+        health = PlayerPrefs.GetInt("Health");
     }
 
     void Update()
@@ -75,6 +77,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         if (PlayerPrefs.GetInt("GemsCollected") != gemsCollected)
         {
             PlayerPrefs.SetInt("GemsCollected", gemsCollected);
+        }
+
+        if(PlayerPrefs.GetInt("Health") != health)
+        {
+            PlayerPrefs.SetInt("Health", health);
         }
     }
 }
