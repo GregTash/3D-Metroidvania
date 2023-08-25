@@ -151,13 +151,10 @@ public static class WebRequests {
         webRequestsMonoBehaviour.StartCoroutine(PushAndReceiveCR(urlPush, urlPull, jsonData, onPushError, onPushSuccess, onPullError, onPullSuccess));
     }
 
-    public delegate void OnPushAndReceive();
-    public static event OnPushAndReceive onPushAndReceiveEvent;
 
     private static IEnumerator PushAndReceiveCR(string urlPush, string urlPull, string jsonData, Action<string> onPushError, Action<string> onPushSuccess, Action<string> onPullError, Action<string> onPullSuccess)
     {
         yield return GetCoroutinePostJson(urlPush, jsonData, onPushError, onPushSuccess);
         yield return GetCoroutine(urlPull, onPullError, onPullSuccess);
-        //onPushAndReceiveEvent?.Invoke();
     }
 }
