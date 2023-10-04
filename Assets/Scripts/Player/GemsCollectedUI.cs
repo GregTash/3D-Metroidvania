@@ -10,10 +10,9 @@ public class GemsCollectedUI : MonoBehaviour
 
     public static int gemsCollect = 0;
 
-    // Update is called once per frame
     void Update()
     {
-        gemCollectText.text = "Gems Collected: " + _playerManager.gemsCollected;
+        gemCollectText.text = _playerManager.gemsCollected.ToString();
         gemsCollect = _playerManager.gemsCollected;
     }
 }

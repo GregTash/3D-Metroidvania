@@ -8,10 +8,9 @@ public class CollectableUI : MonoBehaviour
 
     public static int collected = 0;
 
-    // Update is called once per frame
     void Update()
     {
-        collectableText.text = "Collectables: " + _playerManager.collectables;
+        collectableText.text = _playerManager.collectables.ToString();
         collected = _playerManager.collectables;
     }
 }
