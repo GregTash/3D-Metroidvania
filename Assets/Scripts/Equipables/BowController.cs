@@ -14,7 +14,6 @@ public class BowController : MonoBehaviour
 
     AudioSource _audioSource;
 
-    // Start is called before the first frame update
     void Start()
     {
         transform.root.GetComponent<PlayerInput>();
@@ -30,7 +29,7 @@ public class BowController : MonoBehaviour
     private void OnEnable()
     {
         _playerControls.Default.Attack.started += OnShootBow;
-        // Enable Shoot Bow
+
         InputAction shootKeyPressed = PlayerInput.actions["Attack"];
 
         shootKeyPressed.Enable();
