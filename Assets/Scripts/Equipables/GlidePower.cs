@@ -9,7 +9,7 @@ public class GlidePower : MonoBehaviour
     Rigidbody _playerRb;
     float _glideVelocity = -1f, _glideSpeed = 15f, _playerSpeed;
     public bool disableUsage = false;
-    bool _currentlyGliding = false;
+    [HideInInspector] public bool currentlyGliding = false;
     public float MaxGlidingStamina { get; private set; } = 100f;
     public float GlidingStamina { get; private set; }
     float _staminaDrain = 35f, _staminaRegain = 100f;
@@ -44,7 +44,7 @@ public class GlidePower : MonoBehaviour
     {
         if(_playerMovement.TouchingSomething || GlidingStamina <= 0)
         {
-            if(_currentlyGliding)
+            if(currentlyGliding)
             {
                 GlideDisableNoCallbackContext();
             }
@@ -60,7 +60,7 @@ public class GlidePower : MonoBehaviour
             GlidingStamina = MaxGlidingStamina;
         }
 
-        if(_currentlyGliding)
+        if(currentlyGliding)
         {
             DrainGlideStamina();
         }
@@ -70,7 +70,7 @@ public class GlidePower : MonoBehaviour
     {
         if (_playerMovement.Grounded || disableUsage || _playerMovement.TouchingSomething || GlidingStamina <= 0) return;
 
-        _currentlyGliding = true;
+        currentlyGliding = true;
 
         _audioSource.Play();
 
@@ -87,12 +87,12 @@ public class GlidePower : MonoBehaviour
 
     void GlideDisableNoCallbackContext()
     {
-        if (!_currentlyGliding) return;
+        if (!currentlyGliding) return;
 
         _playerRb.useGravity = true;
         _playerMovement.moveSpeed = _playerSpeed;
 
-        _currentlyGliding = false;
+        currentlyGliding = false;
 
         _audioSource.Stop();
 
