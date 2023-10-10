@@ -14,7 +14,7 @@ public class WeaponManager : MonoBehaviour
 
     BowController _bowController;
 
-    [SerializeField] TextMeshProUGUI playerArrowsLeftText;
+    //[SerializeField] TextMeshProUGUI playerArrowsLeftText;
 
     //TODO: Make a List that holds all weapon objects
     //TODO: Make an integer that holds the weapon select ID (E.G. if you press 2, you will select weapon 2 from the list)
@@ -47,7 +47,7 @@ public class WeaponManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerArrowsLeftText.text = "Arrows left: " + _bowController.arrowsLeft;
+        //playerArrowsLeftText.text = "Arrows left: " + _bowController.arrowsLeft;
 
         //if (Input.GetKeyDown(KeyCode.Q))
         //{
