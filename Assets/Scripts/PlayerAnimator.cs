@@ -7,13 +7,17 @@ public class PlayerAnimator : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerInput playerInput;
     [SerializeField] GlidePower glidePower;
+    [SerializeField] StompPower stompPower;
     Animator _playerAnimator;
+
+    bool _stompAnimationPlaying = false;
 
     public static readonly int MoveInput = Animator.StringToHash("MoveInput");
     public static readonly int GlideInput = Animator.StringToHash("GlideInput");
     public static readonly int Moving = Animator.StringToHash("Moving");
     public static readonly int YVelocity = Animator.StringToHash("YVelocity");
     public static readonly int Grounded = Animator.StringToHash("Grounded");
+    public static readonly int Alive = Animator.StringToHash("Alive");
 
     private void OnEnable()
     {
@@ -46,6 +50,16 @@ public class PlayerAnimator : MonoBehaviour
 
         _playerAnimator.SetFloat(YVelocity, playerRb.velocity.y);
         _playerAnimator.SetBool(Grounded, playerMovement.Grounded);
+
+        if(stompPower.stomping && !_stompAnimationPlaying)
+        {
+            _playerAnimator.Play("Stomp");
+            _stompAnimationPlaying = true;
+        }
+        else if (!stompPower.stomping)
+        {
+            _stompAnimationPlaying = false;
+        }
     }
 
     void OnJump(InputAction.CallbackContext context)

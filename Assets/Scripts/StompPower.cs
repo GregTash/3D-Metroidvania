@@ -21,7 +21,7 @@ public class StompPower : MonoBehaviour
 
     List<Enemy> _enemies = new List<Enemy>();
     [SerializeField] PlayerInput playerInput;
-    bool _stomping = false;
+    [HideInInspector] public bool stomping = false;
 
     float closestObjectDistance;
     [SerializeField] LayerMask ignoreLayers;
@@ -56,7 +56,7 @@ public class StompPower : MonoBehaviour
 
         CalculateClosestObject();
 
-        if (_stomping)
+        if (stomping)
         {
             _playerRb.velocity = new Vector3(0, -diveForce, 0);
 
@@ -97,16 +97,16 @@ public class StompPower : MonoBehaviour
 
     void Stomp(InputAction.CallbackContext context)
     {
-        if (_stomping) return;
+        if (stomping) return;
         if (closestObjectDistance < 6f) return;
 
         swooshAudioSource.Play();
-        _stomping = true;
+        stomping = true;
     }
 
     void StopStomp()
     {
-        _stomping = false;
+        stomping = false;
     }
 
     void CalculateClosestObject()

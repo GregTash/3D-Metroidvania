@@ -1,9 +1,6 @@
-using System.ComponentModel;
-using TMPro;
-using Unity.Collections;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour, IDamageable
 {
@@ -18,7 +15,13 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public int gemsCollected = 0;
 
+    bool _dying = false;
+
     [HideInInspector] public Transform respawnPoint;
+    [SerializeField] PlayerAnimator playerAnimatorScript;
+    [SerializeField] Animator playerAnimator;
+    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] Rigidbody playerRb;
 
     void Start()
     {
@@ -37,7 +40,13 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
         if(health <= 0)
         {
-            Respawn();
+            playerRb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+
+            if (!_dying)
+            {
+                StartCoroutine(Die());
+                _dying = true;
+            }
         }
 
         if(health > MaxHealth)
@@ -63,8 +72,13 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     void Respawn()
     {
+        playerAnimator.SetTrigger("Alive");
+        playerAnimatorScript.enabled = true;
+        playerMovement.detectInput = true;
         transform.position = respawnPoint.position;
         health = MaxHealth;
+        _dying = false;
+        playerRb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     void UpdatePlayerPrefs()
@@ -83,5 +97,14 @@ public class PlayerManager : MonoBehaviour, IDamageable
         {
             PlayerPrefs.SetInt("Health", health);
         }
+    }
+
+    IEnumerator Die()
+    {
+        playerAnimator.Play("Die");
+        playerAnimatorScript.enabled = false;
+        playerMovement.detectInput = false;
+        yield return new WaitForSeconds(4);
+        Respawn();
     }
 }
