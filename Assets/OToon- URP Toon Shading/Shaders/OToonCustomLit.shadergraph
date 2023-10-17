@@ -12096,9 +12096,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 1.0,
-        "g": 1.0,
-        "b": 1.0,
+        "r": 0.6431372761726379,
+        "g": 0.8117647171020508,
+        "b": 0.1725490242242813,
         "a": 0.0
     },
     "isMainColor": false,
@@ -21611,9 +21611,9 @@
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
     "m_Value": {
-        "r": 0.0,
-        "g": 0.0,
-        "b": 0.0,
+        "r": 0.32156863808631899,
+        "g": 0.5764706134796143,
+        "b": 0.250980406999588,
         "a": 0.0
     },
     "isMainColor": false,
