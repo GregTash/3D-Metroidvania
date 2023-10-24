@@ -60,6 +60,15 @@ public class PlayerAnimator : MonoBehaviour
         {
             _stompAnimationPlaying = false;
         }
+
+        if(playerMovement.sprinting)
+        {
+            _playerAnimator.speed = 1.5f;
+        }
+        else
+        {
+            _playerAnimator.speed = 1.0f;
+        }
     }
 
     void OnJump(InputAction.CallbackContext context)

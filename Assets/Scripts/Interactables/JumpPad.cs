@@ -7,9 +7,11 @@ public class JumpPad : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Rigidbody rb = collision.transform.GetComponent<Rigidbody>();
+        Animator animator = collision.transform.GetComponentInChildren<Animator>();
 
         if (rb != null)
         {
+            animator.Play("Jump");
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
             rb.AddForce(jumpForce * transform.up, ForceMode.Impulse);
         }

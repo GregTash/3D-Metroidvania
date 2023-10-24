@@ -10,4 +10,9 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("MountainPath");
         PlayerPrefs.DeleteAll();
     }
+
+    public void OnPressExit()
+    {
+        Application.Quit();
+    }
 }
