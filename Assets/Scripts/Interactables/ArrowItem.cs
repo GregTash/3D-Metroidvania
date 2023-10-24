@@ -5,13 +5,13 @@ using UnityEngine;
 public class ArrowItem : MonoBehaviour
 {
     [SerializeField] int arrowPickupAmount;
-    [SerializeField] BowController _bowController;
+    [SerializeField] BowController bowController;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            _bowController.arrowsLeft += arrowPickupAmount;
+            bowController.arrowsLeft += arrowPickupAmount;
 
             Destroy(gameObject);
         }

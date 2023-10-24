@@ -81,8 +81,11 @@ public class SwordController : MonoBehaviour
     {
         IDamageable damageable;
         hitEnemy.TryGetComponent(out DamageTarget damageTarget);
-        damageable = damageTarget.GetComponent<IDamageable>();
-        damageable.TakeDamage(weaponDamage);
+        if(damageTarget.transform.tag != "Player")
+        {
+            damageable = damageTarget.GetComponent<IDamageable>();
+            damageable.TakeDamage(weaponDamage);
+        }
     }
     
     void OnSwing(InputAction.CallbackContext context)
