@@ -53,13 +53,14 @@ public class PauseScreen : MonoBehaviour
         }
     }
 
-    public void ResumeGame(InputAction.CallbackContext context)
+    public void ResumeGame()
     {
         pauseUI.SetActive(false);
         gameUI.SetActive(true);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
+        playerMovement.detectInput = true;
     }
 
     public void MainMenu()
