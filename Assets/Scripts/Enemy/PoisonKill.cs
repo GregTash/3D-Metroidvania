@@ -32,8 +32,7 @@ public class PoisonKill : MonoBehaviour
     IEnumerator KillAfterSeconds()
     {
         yield return new WaitForSeconds(3);
-        _player.health = 0;
-
+        _player.Respawn();
         _player.GetComponent<PlayerMovement>().enabled = true;
         _player.GetComponent<Rigidbody>().useGravity = true;
         _player.transform.GetComponentsInChildren<GlidePower>()[0].enabled = true;

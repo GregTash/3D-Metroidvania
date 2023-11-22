@@ -70,7 +70,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         respawnPoint = startPos.transform;
     }
 
-    void Respawn()
+    public void Respawn()
     {
         playerAnimator.SetTrigger("Alive");
         playerAnimatorScript.enabled = true;
