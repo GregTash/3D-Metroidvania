@@ -111,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump()
     {
+        if (!detectInput) return; 
         //Reset the y velocity (to ensure the player will always jump at the exact same height).
         _rb.velocity = new Vector3(_rb.velocity.x, 0f, _rb.velocity.z);
 

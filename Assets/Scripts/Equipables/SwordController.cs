@@ -90,6 +90,7 @@ public class SwordController : MonoBehaviour
     
     void OnSwing(InputAction.CallbackContext context)
     {
+
         if (context.started)
         {
             Swing();
@@ -98,6 +99,7 @@ public class SwordController : MonoBehaviour
 
     void Swing()
     {
+        if (!_playerMovement.detectInput) return;
         _animator.Play("Swing Sword");
         swingSoundAudioSource.Play();
     }
