@@ -540,6 +540,11 @@ PrefabInstance:
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 5973162948024621448}
+    - target: {fileID: 5382402480087381794, guid: d0c755edd6488404dbfc853413da2de0,
+        type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 5973162948024621449}
     - target: {fileID: 6092545893127499374, guid: d0c755edd6488404dbfc853413da2de0,
         type: 3}
       propertyPath: m_Enabled
@@ -1495,6 +1500,11 @@ PrefabInstance:
       propertyPath: arrowsLeftText
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: -6293114878773651693, guid: 614d24605e8ceb34f812662c87edb324,
+        type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 5973162948024621449}
     - target: {fileID: 4029840404367751568, guid: 614d24605e8ceb34f812662c87edb324,
         type: 3}
       propertyPath: m_Name

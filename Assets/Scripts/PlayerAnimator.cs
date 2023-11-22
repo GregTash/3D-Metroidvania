@@ -38,6 +38,8 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
+        if (!playerMovement.detectInput) return;
+
         if (playerRb.velocity.x > 2 || playerRb.velocity.x < -2 || playerRb.velocity.z > 2 || playerRb.velocity.z < -2) _playerAnimator.SetBool(Moving, true); 
         else _playerAnimator.SetBool(Moving, false);
 
@@ -73,6 +75,7 @@ public class PlayerAnimator : MonoBehaviour
 
     void OnJump(InputAction.CallbackContext context)
     {
+        if (!playerMovement.detectInput) return;
         _playerAnimator.Play("Jump");
     }
 }

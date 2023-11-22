@@ -42,6 +42,8 @@ public class GlidePower : MonoBehaviour
 
     private void Update()
     {
+        if (!_playerMovement.detectInput) _audioSource.Stop();
+
         if(_playerMovement.TouchingSomething || GlidingStamina <= 0)
         {
             if(currentlyGliding)
@@ -68,6 +70,8 @@ public class GlidePower : MonoBehaviour
 
     void GlideEnable(InputAction.CallbackContext context)
     {
+        if (!_playerMovement.detectInput) return;
+
         if (_playerMovement.Grounded || disableUsage || _playerMovement.TouchingSomething || GlidingStamina <= 0) return;
 
         currentlyGliding = true;

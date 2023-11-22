@@ -8,17 +8,16 @@ public class BowController : MonoBehaviour
     [SerializeField] PlayerInput PlayerInput;
     [SerializeField] GameObject arrowSpawner;
     [SerializeField] GameObject projectile;
+    [SerializeField] PlayerMovement playerMovement;
     [SerializeField] float shotPower;
     PlayerControls _playerControls;
-    PlayerMovement _playerMovement;
+    
     public int arrowsLeft;
 
     AudioSource _audioSource;
 
     void Start()
     {
-        transform.root.GetComponent<PlayerInput>();
-        transform.root.GetComponent<PlayerMovement>();
         _audioSource = GetComponent<AudioSource>();
     }
 
@@ -53,6 +52,8 @@ public class BowController : MonoBehaviour
 
     void OnShootBow(InputAction.CallbackContext context)
     {
+        if (!playerMovement.detectInput) return;
+
         if (arrowsLeft > 0)
         {
             _audioSource.Play();

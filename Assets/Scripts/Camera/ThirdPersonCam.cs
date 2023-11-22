@@ -6,6 +6,7 @@ public class ThirdPersonCam : MonoBehaviour
     [Header("References")]
     //Two of the same variable, so the player's input values can be accessed outside of this script.
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] PlayerMovement playerMovement;
     public PlayerInput PlayerInput { get; private set; }
 
     [SerializeField] Transform orientation;
@@ -41,6 +42,8 @@ public class ThirdPersonCam : MonoBehaviour
 
     private void OnLook()
     {
+        if (!playerMovement.detectInput) return;
+
         //Get the input values and set the input direction.
         float horizontalInput = PlayerInput.actions["Horizontal"].ReadValue<float>();
         float verticalInput = PlayerInput.actions["Vertical"].ReadValue<float>();

@@ -10,7 +10,7 @@ public class WeaponManager : MonoBehaviour
     public GameObject swordObject;
     [SerializeField] PlayerInput playerInput;
     BowController _bowController;
-    PlayerMovement _playerMovement;
+    [SerializeField] PlayerMovement playerMovement;
 
     private void OnEnable()
     {
@@ -34,13 +34,13 @@ public class WeaponManager : MonoBehaviour
     void Start()
     {
         _bowController = transform.GetChild(1).gameObject.GetComponent<BowController>();
-        _playerMovement = transform.root.GetComponent<PlayerMovement>();
     }
 
     void WeaponSwitch(InputAction.CallbackContext context)
     {
+        if (!playerMovement.detectInput) return;
 
-        if (!bowObject.activeSelf && _playerMovement.detectInput)
+        if (!bowObject.activeSelf && playerMovement.detectInput)
         {
             bowObject.SetActive(true);
             swordObject.SetActive(false);
