@@ -10,6 +10,7 @@ public class BowController : MonoBehaviour
     [SerializeField] GameObject projectile;
     [SerializeField] float shotPower;
     PlayerControls _playerControls;
+    PlayerMovement _playerMovement;
     public int arrowsLeft;
 
     AudioSource _audioSource;
@@ -17,6 +18,7 @@ public class BowController : MonoBehaviour
     void Start()
     {
         transform.root.GetComponent<PlayerInput>();
+        transform.root.GetComponent<PlayerMovement>();
         _audioSource = GetComponent<AudioSource>();
     }
 
