@@ -413,6 +413,7 @@ MonoBehaviour:
   groundDrag: 5
   jumpForce: 17.5
   airDrag: 1
+  sprinting: 0
   playerHeight: 2
   maxWalkableAngle: 45
   ignoreLayers:
@@ -539,6 +540,11 @@ PrefabInstance:
       propertyPath: playerInput
       value: 
       objectReference: {fileID: 5973162948024621448}
+    - target: {fileID: 6092545893127499374, guid: d0c755edd6488404dbfc853413da2de0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7303173702035435341, guid: d0c755edd6488404dbfc853413da2de0,
         type: 3}
       propertyPath: m_LocalPosition.y
