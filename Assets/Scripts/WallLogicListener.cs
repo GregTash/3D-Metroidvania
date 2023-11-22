@@ -16,6 +16,8 @@ public class WallLogicListener : MonoBehaviour
             wallLogicSource.timeBeforeResetPlaceholder = wallLogicSource.timeBeforeReset;
 
             wallLogicSource.collidedObjectsCount += 1;
+
+            alreadyCollided = true;
         }
     }
 }
