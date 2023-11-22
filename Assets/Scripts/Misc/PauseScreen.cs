@@ -10,12 +10,13 @@ public class PauseScreen : MonoBehaviour
     [SerializeField] GameObject gameUI;
 
     [SerializeField] PlayerInput playerInput;
-    [SerializeField] PlayerMovement playerMovement;
+    PlayerMovement playerMovement;
     
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1.0f;
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     private void OnEnable()
