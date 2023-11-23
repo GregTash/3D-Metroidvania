@@ -216,7 +216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arrowPickupAmount: 4
-  _bowController: {fileID: 0}
+  bowController: {fileID: 0}
 --- !u!65 &1747182576
 BoxCollider:
   m_ObjectHideFlags: 0

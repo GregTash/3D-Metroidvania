@@ -44,7 +44,6 @@ public class WeaponManager : MonoBehaviour
         {
             bowObject.SetActive(true);
             swordObject.SetActive(false);
-
         }
         else
         {

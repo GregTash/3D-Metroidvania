@@ -293,6 +293,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  gameObjectsOnDeath:
+  - {fileID: 4508221453147102216, guid: f704fa5c21e0beb4d902930d051fb8a5, type: 3}
+  - {fileID: 8277613852504462036, guid: 9f425966bb467fe42926041c46d2c00c, type: 3}
 --- !u!82 &1001123147871351833
 AudioSource:
   m_ObjectHideFlags: 0

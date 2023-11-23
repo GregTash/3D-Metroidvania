@@ -3,7 +3,7 @@ using TMPro;
 
 public class ArrowText : MonoBehaviour
 {
-    [SerializeField] BowController bowController;
+    [SerializeField] PlayerManager playerManager;
     TMP_Text _text;
 
     private void Start()
@@ -13,6 +13,6 @@ public class ArrowText : MonoBehaviour
 
     void Update()
     {
-        _text.text = bowController.arrowsLeft.ToString();
+        _text.text = playerManager.arrowsLeft.ToString();
     }
 }

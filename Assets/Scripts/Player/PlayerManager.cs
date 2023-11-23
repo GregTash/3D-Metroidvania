@@ -12,8 +12,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     [SerializeField] PlayerInput playerInput;
 
     public int collectables = 0;
-
     public int gemsCollected = 0;
+    public int arrowsLeft = 3;
 
     bool _dying = false;
 

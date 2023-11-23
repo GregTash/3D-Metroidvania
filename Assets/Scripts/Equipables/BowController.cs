@@ -6,14 +6,13 @@ using UnityEngine.InputSystem;
 public class BowController : MonoBehaviour
 {
     [SerializeField] PlayerInput PlayerInput;
+    [SerializeField] PlayerManager playerManager;
     [SerializeField] GameObject arrowSpawner;
     [SerializeField] GameObject projectile;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] float shotPower;
     PlayerControls _playerControls;
     
-    public int arrowsLeft;
-
     AudioSource _audioSource;
 
     void Start()
@@ -54,7 +53,7 @@ public class BowController : MonoBehaviour
     {
         if (!playerMovement.detectInput) return;
 
-        if (arrowsLeft > 0)
+        if (playerManager.arrowsLeft > 0)
         {
             _audioSource.Play();
 
@@ -78,7 +77,7 @@ public class BowController : MonoBehaviour
 
             arrow.AddForce(direction.normalized * shotPower, ForceMode.Impulse);
 
-            arrowsLeft -= 1;
+            playerManager.arrowsLeft -= 1;
         }
     }
 }

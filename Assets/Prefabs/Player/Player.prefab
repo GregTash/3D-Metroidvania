@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378efa4956e09f64f9e4597809fa47f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bowController: {fileID: 5922885543846155854}
+  playerManager: {fileID: 3247495052742451703}
 --- !u!1 &5065961518949118153
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,6 +437,7 @@ MonoBehaviour:
   playerInput: {fileID: 5973162948024621448}
   collectables: 0
   gemsCollected: 0
+  arrowsLeft: 3
   respawnPoint: {fileID: 0}
   playerAnimatorScript: {fileID: 1134405721}
   playerAnimator: {fileID: 5750016160317599017}
@@ -1492,6 +1493,11 @@ PrefabInstance:
       objectReference: {fileID: 5973162948024621448}
     - target: {fileID: -6293114878773651693, guid: 614d24605e8ceb34f812662c87edb324,
         type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 3247495052742451703}
+    - target: {fileID: -6293114878773651693, guid: 614d24605e8ceb34f812662c87edb324,
+        type: 3}
       propertyPath: _playerManager
       value: 
       objectReference: {fileID: 0}
@@ -1796,15 +1802,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5922885543846155854 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -6293114878773651693, guid: 614d24605e8ceb34f812662c87edb324,
-    type: 3}
-  m_PrefabInstance: {fileID: 8833824246985097565}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5581316900783962317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f934eedbaf2a074687d59a72313acd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

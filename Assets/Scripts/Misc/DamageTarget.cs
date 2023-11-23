@@ -5,6 +5,7 @@ public class DamageTarget : MonoBehaviour, IDamageable
 {
     public int maxHealth;
     public int Health { get; private set; }
+    [SerializeField] GameObject[] gameObjectsOnDeath;
 
     void Start()
     {
@@ -17,6 +18,8 @@ public class DamageTarget : MonoBehaviour, IDamageable
 
         if (Health <= 0)
         {
+            int rand = Random.Range(0, gameObjectsOnDeath.Length);
+            if (gameObjectsOnDeath[rand] != null) Instantiate(gameObjectsOnDeath[rand], new Vector3(transform.position.x, gameObjectsOnDeath[rand].transform.position.y, transform.position.z), gameObjectsOnDeath[rand].transform.rotation);
             Destroy(gameObject);
         }
     }
