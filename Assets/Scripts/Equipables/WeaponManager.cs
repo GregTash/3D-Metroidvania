@@ -12,6 +12,8 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerManager playerManager;
 
+    bool _bombEnabled = false;
+
     private void OnEnable()
     {
         // Draw Bow Enable
@@ -34,15 +36,17 @@ public class WeaponManager : MonoBehaviour
     {
         if (!playerMovement.detectInput) return;
 
-        if (!bombObject.activeSelf && playerMovement.detectInput)
+        if (!_bombEnabled)
         {
             if (playerManager.bombs > 0) bombObject.SetActive(true);
             swordObject.SetActive(false);
+            _bombEnabled = true;
         }
         else
         {
             bombObject.SetActive(false);
             swordObject.SetActive(true);
+            _bombEnabled = false;
         }
     }
 }
