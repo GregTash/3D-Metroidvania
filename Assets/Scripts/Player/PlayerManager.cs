@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public int collectables = 0;
     public int gemsCollected = 0;
-    public int arrowsLeft = 3;
+    public int bombs = 3;
 
     bool _dying = false;
 
