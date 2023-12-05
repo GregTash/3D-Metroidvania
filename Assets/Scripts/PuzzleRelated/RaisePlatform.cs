@@ -3,49 +3,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using Unity.Mathematics;
 
 public class RaisePlatform : MonoBehaviour
 {
-    [SerializeField] private Vector3 origPosition;
-    [SerializeField] private bool isGroundPounded;
-    [SerializeField] private Vector3 newPosition;
-    [SerializeField] private float time;
-    private float _origTime;
-    private bool _direction;
+    private Rigidbody _rb;
+    [SerializeField] private float timeTilFall;
+    [SerializeField] private float timer;
+    private bool triggeredDrop;
+    private Vector3 origPosition;
+
     private void Start()
     {
-        _origTime = time;
+        _rb = GetComponent<Rigidbody>();
+
         origPosition = transform.position;
-        _direction = true;
     }
 
     private void Update()
     {
-        if (time <= 0)
+        if (triggeredDrop)
         {
-            if (_direction)
-            {
-                _direction = false;
-            }
-            else if (!_direction)
-            {
-                _direction = true;
-            }
+            timer += Time.deltaTime;
 
-            time = _origTime;
+            if (timer >= timeTilFall)
+            {
+                DropPlatform();
+            }
         }
-        else if (time > 0)
+
+        if (transform.position.y <= -500)
         {
-            time -= Time.deltaTime;
+            Instantiate(this, origPosition, quaternion.identity);
+            
+            Destroy(this, 2f);
         }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        other.transform.TryGetComponent(out PlayerManager playerManager);
         
-        if (_direction)
+        if (playerManager)
         {
-            transform.DOMove(newPosition, time);
+            triggeredDrop = true;
         }
-        else if (!_direction)
-        {
-            transform.DOMove(origPosition, time);
-        }
+    }
+
+    void DropPlatform()
+    {
+        _rb.useGravity = true;
+
+        GetComponent<Collider>().enabled = false;
     }
 }
