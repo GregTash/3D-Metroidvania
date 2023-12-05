@@ -5,19 +5,18 @@ using UnityEngine;
 using DG.Tweening;
 using Unity.Mathematics;
 
-public class RaisePlatform : MonoBehaviour
+public class FallingPlatform : MonoBehaviour
 {
     private Rigidbody _rb;
     [SerializeField] private float timeTilFall;
     [SerializeField] private float timer;
     private bool triggeredDrop;
-    private Vector3 origPosition;
+    public Vector3 origPosition;
+    [SerializeField] private GameObject spawnInObject;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-
-        origPosition = transform.position;
     }
 
     private void Update()
@@ -31,29 +30,32 @@ public class RaisePlatform : MonoBehaviour
                 DropPlatform();
             }
         }
-
-        if (transform.position.y <= -500)
-        {
-            Instantiate(this, origPosition, quaternion.identity);
-            
-            Destroy(this, 2f);
-        }
     }
 
     private void OnCollisionEnter(Collision other)
     {
         other.transform.TryGetComponent(out PlayerManager playerManager);
+        other.transform.TryGetComponent(out RespawnPlatform respawnPlatform);
         
         if (playerManager)
         {
             triggeredDrop = true;
+        }
+
+        if (respawnPlatform)
+        {
+            transform.position = origPosition;
+            _rb.useGravity = false;
+            _rb.constraints |= RigidbodyConstraints.FreezePositionY;
+            timer = 0;
         }
     }
 
     void DropPlatform()
     {
         _rb.useGravity = true;
-
-        GetComponent<Collider>().enabled = false;
+        _rb.constraints &= ~RigidbodyConstraints.FreezePositionY;
+        _rb.mass = 2000f;
+        triggeredDrop = false;
     }
 }

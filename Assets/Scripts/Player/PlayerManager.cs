@@ -105,7 +105,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         playerAnimator.Play("Die");
         playerAnimatorScript.enabled = false;
         playerMovement.detectInput = false;
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         Respawn();
     }
 }
