@@ -155,7 +155,7 @@ MonoBehaviour:
   maxWalkableAngle: 45
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 1110
+    m_Bits: 5206
   orientation: {fileID: 5973162948140353399}
 --- !u!114 &3247495052742451703
 MonoBehaviour:
@@ -1194,6 +1194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b90f7c6ee1f5ff4184c59eab966d840, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 5973162948024621448}
+  playerManager: {fileID: 3247495052742451703}
+  playerCameraTransform: {fileID: 0}
+  bombObj: {fileID: 76774455889266718, guid: f8169c6b3817c3242ace24fb6ff93079, type: 3}
 --- !u!114 &5601453147348027440 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8949741480622118678, guid: d0c755edd6488404dbfc853413da2de0,
