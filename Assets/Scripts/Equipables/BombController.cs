@@ -4,7 +4,11 @@ using UnityEngine.InputSystem;
 public class BombController : MonoBehaviour
 {
     [SerializeField] PlayerInput playerInput;
+    [SerializeField] PlayerManager playerManager;
+    [SerializeField] Transform playerCameraTransform;
     PlayerControls _playerControls;
+
+    [SerializeField] GameObject bombObj;
 
     private void Awake()
     {
@@ -26,6 +30,11 @@ public class BombController : MonoBehaviour
 
     void OnThrow(InputAction.CallbackContext context)
     {
-        Debug.Log("WORKING THROW!");
+        if (playerManager.bombs > 0)
+        {
+            GameObject newBomb = Instantiate(bombObj, transform.position + (transform.forward) + new Vector3(0, 1, 0), bombObj.transform.rotation);
+            newBomb.GetComponent<Rigidbody>().AddForce(playerCameraTransform.forward * 50, ForceMode.Impulse);
+            playerManager.bombs--;
+        }
     }
 }

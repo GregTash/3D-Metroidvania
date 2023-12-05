@@ -32,6 +32,19 @@ public class WeaponManager : MonoBehaviour
         aimKeyPressed.canceled -= WeaponSwitch;
     }
 
+    private void Update()
+    {
+        if (playerManager.bombs <= 0)
+        {
+            bombObject.SetActive(false);
+        }
+
+        if (playerManager.bombs > 0 && _bombEnabled)
+        {
+            bombObject.SetActive(true);
+        }
+    }
+
     void WeaponSwitch(InputAction.CallbackContext context)
     {
         if (!playerMovement.detectInput) return;

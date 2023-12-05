@@ -79,6 +79,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
         health = MaxHealth;
         _dying = false;
         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+        bombs = 0;
     }
 
     void UpdatePlayerPrefs()
