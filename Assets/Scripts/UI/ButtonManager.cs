@@ -7,7 +7,7 @@ public class ButtonManager : MonoBehaviour
 {
     public void OnPressStart()
     {
-        SceneManager.LoadScene("MountainPath");
+        SceneManager.LoadScene("MainScene");
         PlayerPrefs.DeleteAll();
     }
 
