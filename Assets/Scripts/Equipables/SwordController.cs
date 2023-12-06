@@ -53,6 +53,10 @@ public class SwordController : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+
+        }
         AutoDisableSwing();
     }
 
