@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class WeaponManager : MonoBehaviour
 {
     public GameObject bombObject;
-    public GameObject swordObject;
+    public GameObject scratchObject;
     [SerializeField] PlayerInput playerInput;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerManager playerManager;
@@ -52,13 +52,13 @@ public class WeaponManager : MonoBehaviour
         if (!_bombEnabled)
         {
             if (playerManager.bombs > 0) bombObject.SetActive(true);
-            swordObject.SetActive(false);
+            scratchObject.SetActive(false);
             _bombEnabled = true;
         }
         else
         {
             bombObject.SetActive(false);
-            swordObject.SetActive(true);
+            scratchObject.SetActive(true);
             _bombEnabled = false;
         }
     }
