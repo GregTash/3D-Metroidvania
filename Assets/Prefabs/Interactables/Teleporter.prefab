@@ -110,4 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc88590cfda28dd4090df784c944fcd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportTransform: {fileID: 0}
+  teleportLocation: {fileID: 0}
+  timeUntilNextTeleport: 2
+  timer: 0
+  playerManger: {fileID: 0}
