@@ -13,23 +13,6 @@ MonoBehaviour:
   m_Name: PrefabPalette-Default
   m_EditorClassIdentifier: 
   prefabs:
-  - gameObject: {fileID: 3589402564649788260, guid: 2df87b6594b47e64cbec15f49122be51,
-      type: 3}
-    settings:
-      m_Strength: 50
-      m_RotationRangeMin: {x: 0, y: 0, z: 0}
-      m_RotationRangeMax: {x: 0, y: 0, z: 0}
-      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
-      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
-      m_UniformScale: {x: 1, y: 1}
-      m_UniformBool: 0
-      m_XRotationBool: 0
-      m_YRotationBool: 0
-      m_ZRotationBool: 0
-      m_XScaleBool: 0
-      m_YScaleBool: 0
-      m_ZScaleBool: 0
-    name: hand_painted_tree (Blue)
   - gameObject: {fileID: 6160935904892384710, guid: 5d3b90f57c05ed14ea9db979711a95e7,
       type: 3}
     settings:
