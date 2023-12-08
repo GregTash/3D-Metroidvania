@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GlowCave.unity
     guid: 0e30676ea81b04442bd5e4e62eb8e8af
+  - enabled: 1
+    path: Assets/Scenes/Ending.unity
+    guid: f021767230dde624fa1add91a051e097
   m_configObjects: {}
