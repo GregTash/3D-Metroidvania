@@ -15,6 +15,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public int gemsCollected = 0;
     public int bombs = 3;
 
+    public bool canTeleport;
+    
     bool _dying = false;
 
     [HideInInspector] public Transform respawnPoint;
