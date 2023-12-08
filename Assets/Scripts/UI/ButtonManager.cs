@@ -7,7 +7,7 @@ public class ButtonManager : MonoBehaviour
 {
     public void OnPressStart()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("Loading");
         PlayerPrefs.DeleteAll();
     }
 
