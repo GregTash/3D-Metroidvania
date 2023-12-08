@@ -9,6 +9,10 @@ public class SinWave : MonoBehaviour
     Rigidbody _rb;
     [SerializeField] float maxHeight = 1f, speed = 1f;
     [SerializeField] bool inverted = false;
+    
+    [SerializeField] private bool isRotating;
+    [SerializeField] private Vector3 rotationAngle;
+    [SerializeField] private float rotationSpeed;
 
     private void Start()
     {
@@ -21,5 +25,8 @@ public class SinWave : MonoBehaviour
     {
         if(!inverted) _rb.velocity = new Vector3(0, Mathf.Sin(Time.time * speed) * maxHeight, 0);
         else _rb.velocity = new Vector3(0, (Mathf.Sin(Time.time * speed) * maxHeight) * -1, 0);
+        
+        if (isRotating)
+            transform.Rotate(rotationAngle * (rotationSpeed * Time.deltaTime));
     }
 }
