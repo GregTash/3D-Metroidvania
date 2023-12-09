@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
     public int collectables = 0;
     public int gemsCollected = 0;
+    public int diamondsCollected = 0;
     public int bombs = 3;
 
     public bool canTeleport;
@@ -32,6 +33,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
         collectables = PlayerPrefs.GetInt("Collectables");
 
         gemsCollected = PlayerPrefs.GetInt("GemsCollected");
+
+        diamondsCollected = PlayerPrefs.GetInt("diamondsCollected");
 
         health = PlayerPrefs.GetInt("Health");
     }
