@@ -6,14 +6,6 @@ public class BombExplode : MonoBehaviour
     GameObject _explosion;
     Animator _explosionAnimator;
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        _explosion = Instantiate(explosion, transform.position, Quaternion.identity);
-        _explosionAnimator = _explosion.GetComponent<Animator>();
-
-        DisableObjectAndChild(transform);
-    }
-
     private void Update()
     {
         if (_explosion != null)
@@ -24,6 +16,16 @@ public class BombExplode : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _explosion = Instantiate(explosion, transform.position, Quaternion.identity);
+        _explosionAnimator = _explosion.GetComponent<Animator>();
+
+        DisableObjectAndChild(transform);
+
+        Debug.Log(collision.transform.name);
     }
 
     void DisableObjectAndChild(Transform parent)

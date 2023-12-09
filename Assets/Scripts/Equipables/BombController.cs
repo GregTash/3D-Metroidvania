@@ -18,13 +18,11 @@ public class BombController : MonoBehaviour
 
     private void OnEnable()
     {
-        _playerControls.Default.Attack.started += OnThrow;
         playerInput.actions["Attack"].started += OnThrow;
     }
 
     private void OnDisable()
     {
-        _playerControls.Default.Attack.started -= OnThrow;
         playerInput.actions["Attack"].started -= OnThrow;
     }
 
