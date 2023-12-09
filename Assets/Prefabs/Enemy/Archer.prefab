@@ -115,7 +115,7 @@ MonoBehaviour:
   maxHealth: 20
   gameObjectsOnDeath:
   - {fileID: 4508221453147102216, guid: f704fa5c21e0beb4d902930d051fb8a5, type: 3}
-  - {fileID: 8277613852504462036, guid: 9f425966bb467fe42926041c46d2c00c, type: 3}
+  - {fileID: 2267875839743212241, guid: 38a06c42b6bed574f82f7e2bde3c52ac, type: 3}
 --- !u!82 &6510173796172595664
 AudioSource:
   m_ObjectHideFlags: 0

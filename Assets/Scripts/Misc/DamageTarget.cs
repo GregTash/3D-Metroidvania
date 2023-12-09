@@ -19,7 +19,7 @@ public class DamageTarget : MonoBehaviour, IDamageable
         if (Health <= 0)
         {
             int rand = Random.Range(0, gameObjectsOnDeath.Length);
-            if (gameObjectsOnDeath[rand] != null) Instantiate(gameObjectsOnDeath[rand], new Vector3(transform.position.x, gameObjectsOnDeath[rand].transform.position.y, transform.position.z), gameObjectsOnDeath[rand].transform.rotation);
+            if (gameObjectsOnDeath[rand] != null) Instantiate(gameObjectsOnDeath[rand], new Vector3(transform.position.x, transform.position.y + gameObjectsOnDeath[rand].transform.position.x, transform.position.z), gameObjectsOnDeath[rand].transform.rotation);
             Destroy(gameObject);
         }
     }
