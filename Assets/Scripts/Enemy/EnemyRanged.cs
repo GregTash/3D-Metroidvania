@@ -14,10 +14,7 @@ public class EnemyRanged : MonoBehaviour
     Rigidbody _rb;
     EnemyBow _enemyBow;
 
-
     public float rotationSpeed; // rotationSpeed of Slerp
-    // Start is called before the first frame update
-
 
     void Start()
     {
@@ -26,7 +23,6 @@ public class EnemyRanged : MonoBehaviour
         _enemyBow = GetComponentInChildren<EnemyBow>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_enemyAI.playerInRange)

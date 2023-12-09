@@ -1,26 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.ProBuilder;
 
 public class EnemyBow : MonoBehaviour
 {
     [SerializeField] EnemyAI _enemyAI;
     [SerializeField] EnemyRanged _enemyRanged;
 
-    bool alreadyAttacked;
+    bool _alreadyAttacked = true;
 
     [SerializeField] float timeBetweenAttacks;
     [SerializeField] GameObject projectile;
-    [SerializeField] GameObject projectileSpawner;
     [SerializeField] float shotPower;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField] Animator animator;
 
+    private void Start()
+    {
+        Invoke(nameof(ResetAttack), timeBetweenAttacks);
     }
-    
+
     public void ShootAtPlayer()
     {
         var targetDirection = _enemyAI.player.position - transform.position;
@@ -29,17 +26,23 @@ public class EnemyBow : MonoBehaviour
 
         transform.rotation = Quaternion.Slerp(transform.rotation, rotationAngle, Time.deltaTime * _enemyRanged.rotationSpeed);
 
-        if (!alreadyAttacked)
+        if (!_alreadyAttacked)
         {
-            Rigidbody _projectileRb = Instantiate(projectile, projectileSpawner.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            _projectileRb.velocity = transform.forward * shotPower;
-            alreadyAttacked = true;
+            animator.Play("Jump");
+            
+            _alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
 
+    public void ThrowBomb()
+    {
+        Rigidbody _projectileRb = Instantiate(projectile, transform.position + new Vector3(0, 2, 0), Quaternion.identity).GetComponent<Rigidbody>();
+        _projectileRb.velocity = transform.forward * shotPower;
+    }
+
     void ResetAttack()
     {
-        alreadyAttacked = false;
+        _alreadyAttacked = false;
     }
 }
