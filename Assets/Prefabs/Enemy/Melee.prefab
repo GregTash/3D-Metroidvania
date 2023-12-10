@@ -54,7 +54,7 @@ NavMeshAgent:
   m_Speed: 5
   m_Acceleration: 5
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 240
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c87839de59fa47d44ab6dc312e63b2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 6690121791558459411}
   navMeshAgent: {fileID: 7149903392012872159}
   player: {fileID: 0}
   playerLayer:
@@ -84,9 +85,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 1
+  walkPointRange: 5
   sightRange: 8
   playerInRange: 0
+  timeToWalkAgain: 2
 --- !u!136 &7149903392012872154
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -701,6 +703,12 @@ PrefabInstance:
 --- !u!4 &6690121791549460039 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 930784901485925687, guid: 72eb13d3af54928469ef899a5dad2395,
+    type: 3}
+  m_PrefabInstance: {fileID: 5778920679491132272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6690121791558459411 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 930784901493128035, guid: 72eb13d3af54928469ef899a5dad2395,
     type: 3}
   m_PrefabInstance: {fileID: 5778920679491132272}
   m_PrefabAsset: {fileID: 0}

@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    [SerializeField] Animator animator;
 
     public NavMeshAgent navMeshAgent;
 
@@ -21,10 +20,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float sightRange;
     public bool playerInRange;
 
+    [SerializeField] float timeToWalkAgain = 3.0f;
+    float _tempTimeToWalkAgain = 0.0f;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
+        timeToWalkAgain = 3.0f;
     }
 
     private void Update()
@@ -46,12 +49,22 @@ public class EnemyAI : MonoBehaviour
     {
         if (!walkPointSet)
         {
-            SearchWalkPoint();
+            if (_tempTimeToWalkAgain > 0)
+            {
+                _tempTimeToWalkAgain -= Time.deltaTime;
+                animator.Play("Idle");
+            }
+            else
+            {
+                _tempTimeToWalkAgain = Random.Range(0.5f, timeToWalkAgain);
+                SearchWalkPoint();
+            }
         }
 
         if (walkPointSet)
         {
             navMeshAgent.SetDestination(walkPoint);
+            animator.Play("Run");
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
