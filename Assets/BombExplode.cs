@@ -24,8 +24,6 @@ public class BombExplode : MonoBehaviour
         _explosionAnimator = _explosion.GetComponent<Animator>();
 
         DisableObjectAndChild(transform);
-
-        Debug.Log(collision.transform.name);
     }
 
     void DisableObjectAndChild(Transform parent)

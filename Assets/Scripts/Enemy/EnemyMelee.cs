@@ -4,42 +4,89 @@ using UnityEngine;
 
 public class EnemyMelee : MonoBehaviour
 {
-    [SerializeField] int damageAmount;
-    // [SerializeField] int knockbackPower;
+    [SerializeField] GameObject scratchVFX;
+    [SerializeField] int damageAmount = 5;
+    [SerializeField] float timeBetweenAttack = 1.0f;
+    float _tempTimeBetweenAttack = 0.0f;
+
+    bool _scratchVfxEnabled = false;
+    [SerializeField] float scratchVfxTimer = 1.0f;
+    float _tempScratchVfxTimer = 0.0f;
+
     AudioSource _audioSource;
-    bool takenDamage;
-    EnemyAI _enemyAI;
-    Rigidbody _rb;
+    bool _takenDamage;
+    PlayerManager _player;
 
     private void Awake()
     {
         _audioSource = GetComponent<AudioSource>();
-        _enemyAI = GetComponent<EnemyAI>();
-        _rb = GetComponent<Rigidbody>();
+
+        _tempTimeBetweenAttack = timeBetweenAttack;
+        _tempScratchVfxTimer = scratchVfxTimer;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void Update()
     {
-        IDamageable damageable;
-
-        collision.transform.TryGetComponent(out PlayerManager playerManager); // checks for playerManager
-        if (playerManager)
+        if (_player != null)
         {
-            if (!takenDamage)
+            if (!_takenDamage)
             {
-                damageable = playerManager.GetComponent<IDamageable>();
-                damageable.TakeDamage(damageAmount); // Runs TakeDamage
-                _audioSource.Play();
-                takenDamage = true;
-                //_rb.AddForce(-transform.forward * knockbackPower, ForceMode.Force);
-                StartCoroutine(ITimeBetweenDamage());
+                Attack();
+            }
+        }
+
+        if (_takenDamage)
+        {
+            if (_tempTimeBetweenAttack > 0)
+            {
+                _tempTimeBetweenAttack -= Time.deltaTime;
+            }
+            else
+            {
+                _tempTimeBetweenAttack = timeBetweenAttack;
+                _takenDamage = false;
+            }
+        }
+
+        if (_scratchVfxEnabled)
+        {
+            if (_tempScratchVfxTimer > 0)
+            {
+                _tempScratchVfxTimer -= Time.deltaTime;
+            }
+            else
+            {
+                _tempScratchVfxTimer = scratchVfxTimer;
+                scratchVFX.SetActive(false);
+                _scratchVfxEnabled = false;
             }
         }
     }
 
-    IEnumerator ITimeBetweenDamage()
+    void Attack()
     {
-        yield return new WaitForSeconds(.2f);
-        takenDamage = false;
+        _player.GetComponent<IDamageable>().TakeDamage(damageAmount); // Runs TakeDamage
+        _audioSource.Play();
+        _takenDamage = true;
+
+        scratchVFX.SetActive(true);
+        _scratchVfxEnabled = true;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        collision.transform.TryGetComponent(out PlayerManager playerManager); // checks for playerManager
+        if (playerManager)
+        {
+            if (!_takenDamage)
+            {
+                _player = playerManager;
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        _player = null;
     }
 }
