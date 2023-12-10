@@ -44,7 +44,6 @@ public class PlayerInteract : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         playerInRange = false;
-        PlayerInput = null;
     }
 
     void OnInteract(InputAction.CallbackContext context)

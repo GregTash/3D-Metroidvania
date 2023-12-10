@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2761993652771424916}
   - component: {fileID: 121709194553589342}
   - component: {fileID: 2966583036920570671}
+  - component: {fileID: 7860609616494716259}
+  - component: {fileID: 2168543386131156895}
   m_Layer: 0
   m_Name: Teleporter
   m_TagString: Untagged
@@ -98,6 +100,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportLocation: {fileID: 0}
+--- !u!64 &7860609616494716259
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923206014261026699}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 587366007896238738, guid: f2f35c5a402c6494ab30e1a3930226a0, type: 3}
+--- !u!135 &2168543386131156895
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923206014261026699}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.57
+  m_Center: {x: -0.0006148815, y: 1.3113973, z: -0.97}
 --- !u!1 &4530798631169089466
 GameObject:
   m_ObjectHideFlags: 0
