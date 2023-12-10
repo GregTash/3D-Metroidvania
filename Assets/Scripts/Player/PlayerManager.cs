@@ -16,6 +16,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
     public int diamondsCollected = 0;
     public int bombs = 3;
 
+    [SerializeField] private GameObject forcefieldToDestroy;
+
     public bool canTeleport;
     
     bool _dying = false;
@@ -57,6 +59,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         if(health > MaxHealth)
         {
             health = MaxHealth;
+        }
+
+        if (diamondsCollected >= 3)
+        {
+            Destroy(forcefieldToDestroy, 1.5f);
         }
     }
 

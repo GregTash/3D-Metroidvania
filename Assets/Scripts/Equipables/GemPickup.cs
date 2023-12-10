@@ -4,11 +4,12 @@ using UnityEngine.SceneManagement;
 public class GemPickup : MonoBehaviour
 {
     [SerializeField] private PlayerManager playerManager;
+    private AudioSource _audioSource;
     private void Start()
     {
         if (PlayerPrefs.GetInt(transform.name) > 0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 5);
         }
     }
 
@@ -17,7 +18,9 @@ public class GemPickup : MonoBehaviour
         playerManager.gemsCollected++;
         
         PlayerPrefs.SetInt(transform.name, 1);
+
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
         
-        Destroy(gameObject);
+        Destroy(gameObject, 5);
     }
 }
