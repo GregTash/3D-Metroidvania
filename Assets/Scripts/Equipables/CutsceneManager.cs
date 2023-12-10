@@ -30,8 +30,7 @@ public class CutsceneManager : MonoBehaviour
     {
         if(_cutsceneEnabled)
         {
-            if (!_playerMovement.Grounded) _playerRb.velocity = new Vector3(0, _playerRb.velocity.y, 0);
-            else _playerRb.velocity = Vector3.zero;
+            if (_playerMovement.Grounded) _playerRb.isKinematic = true;
 
             if (!_cutsceneAnimation.isPlaying) DisableCutscene();
         }
@@ -65,5 +64,6 @@ public class CutsceneManager : MonoBehaviour
 
         _playerMovement.detectInput = true;
         _playerManager.allowDamage = true;
+        _playerRb.isKinematic = false;
     }
 }

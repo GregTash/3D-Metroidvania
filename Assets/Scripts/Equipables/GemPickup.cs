@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class GemPickup : MonoBehaviour
 {
     [SerializeField] private PlayerManager playerManager;
-    private AudioSource _audioSource;
+
     private void Start()
     {
         if (PlayerPrefs.GetInt(transform.name) > 0)
