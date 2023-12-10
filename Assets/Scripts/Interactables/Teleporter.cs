@@ -6,6 +6,12 @@ using UnityEngine;
 public class Teleporter : MonoBehaviour
 {
     [SerializeField] private Transform teleportLocation;
+    AudioSource _audioSource;
+
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -14,6 +20,7 @@ public class Teleporter : MonoBehaviour
             if (playerManager)
             {
                 collision.transform.position = teleportLocation.position;
+                _audioSource.Play();
             }
         }
     }
