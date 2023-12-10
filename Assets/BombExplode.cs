@@ -5,6 +5,12 @@ public class BombExplode : MonoBehaviour
     [SerializeField] GameObject explosion;
     GameObject _explosion;
     Animator _explosionAnimator;
+    AudioSource _audioSource;
+
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -22,6 +28,8 @@ public class BombExplode : MonoBehaviour
     {
         _explosion = Instantiate(explosion, transform.position, Quaternion.identity);
         _explosionAnimator = _explosion.GetComponent<Animator>();
+
+        _audioSource.Play();
 
         DisableObjectAndChild(transform);
     }

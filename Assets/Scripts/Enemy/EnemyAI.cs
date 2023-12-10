@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour
     // Check for range
     [SerializeField] float sightRange;
     public bool playerInRange;
+    bool _touchingPlayer = false;
 
     [SerializeField] float timeToWalkAgain = 3.0f;
     float _tempTimeToWalkAgain = 0.0f;
@@ -52,7 +53,13 @@ public class EnemyAI : MonoBehaviour
             if (_tempTimeToWalkAgain > 0)
             {
                 _tempTimeToWalkAgain -= Time.deltaTime;
-                if (animator != null) animator.Play("Idle");
+                if (animator != null)
+                {
+                    if (animator.GetCurrentAnimatorStateInfo(0).IsName("Run"))
+                    {
+                        animator.Play("Idle");
+                    }
+                }
             }
             else
             {
@@ -64,7 +71,13 @@ public class EnemyAI : MonoBehaviour
         if (walkPointSet)
         {
             navMeshAgent.SetDestination(walkPoint);
-            if (animator != null) animator.Play("Run");
+            if (animator != null)
+            {
+                if (animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+                {
+                    animator.Play("Run");
+                }
+            }
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -91,6 +104,34 @@ public class EnemyAI : MonoBehaviour
 
     void ChasePlayer()
     {
-        navMeshAgent.SetDestination(player.position);
+        if (!_touchingPlayer) navMeshAgent.SetDestination(player.position);
+
+        if (animator != null)
+        {
+            if (!_touchingPlayer && animator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                animator.Play("Run");
+            }
+            
+            if (_touchingPlayer && animator.GetCurrentAnimatorStateInfo(0).IsName("Run"))
+            {
+                animator.Play("Idle");
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        collision.transform.TryGetComponent(out PlayerManager player);
+
+        if (player)
+        {
+            _touchingPlayer = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        _touchingPlayer = false;
     }
 }
