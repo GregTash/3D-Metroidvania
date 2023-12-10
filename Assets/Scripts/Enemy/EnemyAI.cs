@@ -52,7 +52,7 @@ public class EnemyAI : MonoBehaviour
             if (_tempTimeToWalkAgain > 0)
             {
                 _tempTimeToWalkAgain -= Time.deltaTime;
-                animator.Play("Idle");
+                if (animator != null) animator.Play("Idle");
             }
             else
             {
@@ -64,7 +64,7 @@ public class EnemyAI : MonoBehaviour
         if (walkPointSet)
         {
             navMeshAgent.SetDestination(walkPoint);
-            animator.Play("Run");
+            if (animator != null) animator.Play("Run");
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
