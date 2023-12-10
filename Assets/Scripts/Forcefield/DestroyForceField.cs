@@ -8,7 +8,6 @@ public class DestroyForceField : MonoBehaviour
     
     public void DestroyField()
     {
-        GetComponent<AudioSource>().Play();
-        Destroy(forceField, 1.5f);
+        Destroy(forceField, 1f);
     }
 }

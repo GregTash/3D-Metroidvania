@@ -3,6 +3,7 @@ using UnityEngine;
 public class BombPickup : MonoBehaviour
 {
     [SerializeField] int amount;
+    [SerializeField] private AudioClip _clip;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -10,6 +11,7 @@ public class BombPickup : MonoBehaviour
 
         if (playerManager)
         {
+            AudioSource.PlayClipAtPoint(_clip, transform.position, .75f);
             playerManager.bombs += amount;
             Destroy(gameObject);
         }

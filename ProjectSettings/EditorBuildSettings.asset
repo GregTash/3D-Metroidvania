@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainScene.unity
     guid: 8947b4956ea54594690e10985f16610a
   - enabled: 1
+    path: Assets/Scenes/LoadingGlowCave.unity
+    guid: 7a17dd91d29f38d468d2dc21a7b56290
+  - enabled: 1
     path: Assets/Scenes/GlowCave.unity
     guid: 0e30676ea81b04442bd5e4e62eb8e8af
   - enabled: 1

@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healingAmount: 20
+  _clip: {fileID: 8300000, guid: a20caf3c155213f4292970e07bcf31e8, type: 3}
 --- !u!1 &7325009739567825117
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,11 +17,11 @@ public class AddDiamond : MonoBehaviour
 
     public void AddDiamondToInventory()
     {
-        playerManager.diamondsCollected++;
+        playerManager.diamondsCollected+= 1;
 
         if (playerManager.diamondsCollected >= 3)
         {
-            AudioSource.PlayClipAtPoint(_clip, playerManager.transform.position, .5f);
+            AudioSource.PlayClipAtPoint(_clip, playerManager.transform.position);
         }
         
         PlayerPrefs.SetInt(transform.name, 1);

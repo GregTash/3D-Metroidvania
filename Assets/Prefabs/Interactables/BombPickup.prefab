@@ -231,3 +231,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 1
+  _clip: {fileID: 8300000, guid: 8c1ae0cd467fe1245b75a9e0b9a660d1, type: 3}

@@ -12,6 +12,8 @@ public class PlayerInteract : MonoBehaviour
 
     [SerializeField] UnityEvent onInteractEvent;
 
+    private bool interactedWith;
+
     private void OnEnable()
     {
         if (PlayerInput != null)
@@ -37,6 +39,7 @@ public class PlayerInteract : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerInRange = true;
+            interactedWith = false;
         }
 
     }
@@ -48,10 +51,11 @@ public class PlayerInteract : MonoBehaviour
 
     void OnInteract(InputAction.CallbackContext context)
     {
-        if (playerInRange)
+        if (playerInRange && !interactedWith)
         {
             Debug.Log("interacted");
             onInteractEvent.Invoke();
+            interactedWith = true;
         }
     }
 }
