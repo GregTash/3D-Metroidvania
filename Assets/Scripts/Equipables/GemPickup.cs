@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GemPickup : MonoBehaviour
 {
+    [SerializeField] private PlayerManager playerManager;
     private void Start()
     {
         if (PlayerPrefs.GetInt(transform.name) > 0)
@@ -11,16 +12,12 @@ public class GemPickup : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void AddGemToInventory()
     {
-        other.TryGetComponent(out PlayerManager player);
-
-        if (!player) return;
-
-        player.gemsCollected++;
-
-        PlayerPrefs.SetInt(transform.name, 0);
-
+        playerManager.gemsCollected++;
+        
+        PlayerPrefs.SetInt(transform.name, 1);
+        
         Destroy(gameObject);
     }
 }

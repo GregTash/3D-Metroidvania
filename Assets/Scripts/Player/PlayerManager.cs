@@ -34,7 +34,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
 
         gemsCollected = PlayerPrefs.GetInt("GemsCollected");
 
-        diamondsCollected = PlayerPrefs.GetInt("diamondsCollected");
+        diamondsCollected = PlayerPrefs.GetInt("DiamondsCollected");
 
         health = PlayerPrefs.GetInt("Health");
     }
@@ -97,6 +97,11 @@ public class PlayerManager : MonoBehaviour, IDamageable
         if (PlayerPrefs.GetInt("GemsCollected") != gemsCollected)
         {
             PlayerPrefs.SetInt("GemsCollected", gemsCollected);
+        }
+        
+        if (PlayerPrefs.GetInt("DiamondsCollected") != diamondsCollected)
+        {
+            PlayerPrefs.SetInt("DiamondsCollected", diamondsCollected);
         }
 
         if (PlayerPrefs.GetInt("Health") != health)

@@ -11,7 +11,7 @@ public class GemDiamondNumber : MonoBehaviour
 
     private void Update()
     {
-        diamondNumber.text = PlayerPrefs.GetInt("diamondsCollected").ToString();
+        diamondNumber.text = PlayerPrefs.GetInt("DiamondsCollected").ToString();
         gemNumber.text = PlayerPrefs.GetInt("GemsCollected").ToString();
     }
 }
