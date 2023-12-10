@@ -99,7 +99,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
             PlayerPrefs.SetInt("GemsCollected", gemsCollected);
         }
 
-        if(PlayerPrefs.GetInt("Health") != health)
+        if (PlayerPrefs.GetInt("Health") != health)
         {
             PlayerPrefs.SetInt("Health", health);
         }

@@ -19,14 +19,8 @@ public class GemPickup : MonoBehaviour
 
         player.gemsCollected++;
 
-        PlayerPrefs.SetInt(transform.name, 1);
+        PlayerPrefs.SetInt(transform.name, 0);
 
         Destroy(gameObject);
-
-        if (player.gemsCollected == 2)
-        {
-            SceneManager.LoadScene("Leaderboard");
-        }
-        
     }
 }
