@@ -24,6 +24,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] float timeToWalkAgain = 3.0f;
     float _tempTimeToWalkAgain = 0.0f;
 
+    [SerializeField] float retryWalkTime = 3.0f;
+    float _tempRetryWalkTime = 0.0f;
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -78,6 +81,15 @@ public class EnemyAI : MonoBehaviour
                     animator.Play("Run");
                 }
             }
+
+            if (_tempRetryWalkTime > 0)
+            {
+                _tempRetryWalkTime -= Time.deltaTime;
+            }
+            else
+            {
+                walkPointSet = false;
+            }
         }
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
@@ -100,11 +112,14 @@ public class EnemyAI : MonoBehaviour
         {
             walkPointSet = true; // the walkpoint can be set
         }
+
+        _tempRetryWalkTime = retryWalkTime;
     }
 
     void ChasePlayer()
     {
         if (!_touchingPlayer) navMeshAgent.SetDestination(player.position);
+        _tempRetryWalkTime = retryWalkTime;
 
         if (animator != null)
         {

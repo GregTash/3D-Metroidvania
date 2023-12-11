@@ -5,14 +5,6 @@ public class GemPickup : MonoBehaviour
 {
     [SerializeField] private PlayerManager playerManager;
 
-    private void Start()
-    {
-        if (PlayerPrefs.GetInt(transform.name) > 0)
-        {
-            Destroy(gameObject, 5);
-        }
-    }
-
     public void AddGemToInventory()
     {
         playerManager.gemsCollected++;

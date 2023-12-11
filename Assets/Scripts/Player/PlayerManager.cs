@@ -32,6 +32,7 @@ public class PlayerManager : MonoBehaviour, IDamageable
     {
         SetInitialSpawnpoint();
 
+        /*
         collectables = PlayerPrefs.GetInt("Collectables");
 
         gemsCollected = PlayerPrefs.GetInt("GemsCollected");
@@ -39,6 +40,9 @@ public class PlayerManager : MonoBehaviour, IDamageable
         diamondsCollected = PlayerPrefs.GetInt("DiamondsCollected");
 
         health = PlayerPrefs.GetInt("Health");
+        */
+
+        PlayerPrefs.DeleteAll();
 
         if (PlayerPrefs.GetInt("Health") <= 0) health = MaxHealth;
     }
