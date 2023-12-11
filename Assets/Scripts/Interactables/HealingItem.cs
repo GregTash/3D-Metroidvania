@@ -15,8 +15,7 @@ public class HealingItem : MonoBehaviour
         {
             AudioSource.PlayClipAtPoint(_clip, transform.position);
             _playerManager.health += healingAmount;
+            Destroy(gameObject);
         }
-
-        Destroy(gameObject);
     }
 }

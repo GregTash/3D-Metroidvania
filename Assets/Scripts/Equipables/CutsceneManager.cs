@@ -8,12 +8,15 @@ public class CutsceneManager : MonoBehaviour
     Animation _cutsceneAnimation;
 
     [SerializeField] GameObject _player;
+    [SerializeField] Animator _playerAnimator;
 
     PlayerMovement _playerMovement;
     PlayerManager _playerManager;
     Rigidbody _playerRb;
 
     bool _cutsceneEnabled = false;
+
+    public static readonly int Moving = Animator.StringToHash("Moving");
 
     void Start()
     {
@@ -31,6 +34,12 @@ public class CutsceneManager : MonoBehaviour
         if(_cutsceneEnabled)
         {
             if (_playerMovement.Grounded) _playerRb.isKinematic = true;
+
+            if (!_playerAnimator.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
+            {
+                _playerAnimator.SetBool(Moving, false);
+                _playerAnimator.Play("Idle");
+            }
 
             if (!_cutsceneAnimation.isPlaying) DisableCutscene();
         }

@@ -39,6 +39,8 @@ public class PlayerManager : MonoBehaviour, IDamageable
         diamondsCollected = PlayerPrefs.GetInt("DiamondsCollected");
 
         health = PlayerPrefs.GetInt("Health");
+
+        if (PlayerPrefs.GetInt("Health") <= 0) health = MaxHealth;
     }
 
     void Update()
