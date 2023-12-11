@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 1113855900088692306}
   - component: {fileID: 4208042383218449414}
   - component: {fileID: 5062661750351846113}
+  - component: {fileID: 4851635275942279978}
+  - component: {fileID: 7292375555298087546}
   m_Layer: 0
   m_Name: FallingPlatform
   m_TagString: Untagged
@@ -584,6 +586,32 @@ AudioSource:
     m_PostInfinity: 2
     m_RotationOrder: 4
 --- !u!65 &5062661750351846113
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113855900088692298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.28894, y: 7.104889, z: 8.880802}
+  m_Center: {x: -4.64447, y: 1.5632095, z: 4.440279}
+--- !u!65 &4851635275942279978
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113855900088692298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 9.28894, y: 7.104889, z: 14.629883}
+  m_Center: {x: -4.64447, y: 1.5632095, z: 7.3148193}
+--- !u!65 &7292375555298087546
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
